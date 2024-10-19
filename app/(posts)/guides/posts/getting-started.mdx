@@ -1,0 +1,95 @@
+---
+title: "Getting Started"
+author: 
+  name: "Raphael Salaja"
+  link: "https://twitter.com/raphaelsalaja"
+  handle: "raphaelsalaja"
+time:
+  created: "2024-10-12T20:54:05.150Z"
+  updated: "2024-10-17T09:56:06.854Z"
+---
+
+# Installation
+
+Follow these simple steps to get started:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+This will install the necessary dependencies and start the development server. Once the server is running, you can view your portfolio at `http://localhost:3000`.
+
+# Environment Variables
+
+The following environment variables are required to run the application:
+
+- `NEXT_PUBLIC_SITE_URL`: The URL of your website.
+
+Run the following command to create a `.env.local` file and add the required environment variables:
+
+```bash
+vercel env pull
+```
+
+Then, update the values in the `.env.local` file with your own values.
+
+# Scripts
+
+The following scripts are available to help you manage development, build processes, and linting:
+
+`build`
+
+Runs the linting process, updates MDX file timestamps, and then builds the Next.js application for production. This ensures code quality and proper SEO metadata before deployment.
+
+```bash
+pnpm build
+```
+
+`postbuild`
+
+Automatically generates the sitemap after the build process completes. This script uses the `next-sitemap` package to create a `sitemap.xml` file for better SEO and discoverability.
+
+```bash
+pnpm postbuild
+```
+
+`mdx:timestamps`
+
+Runs a custom Node.js script that updates timestamps (`created` and `updated`) in your MDX files, automating the time management for blog posts.
+
+```bash
+pnpm mdx:timestamps
+```
+
+`lint:style`
+
+Runs `stylelint` on all CSS files to check and automatically fix any style issues. This ensures consistent and clean CSS code.
+
+```bash
+pnpm lint:style
+```
+
+`lint:biome`
+
+Runs the Biome linter to check and fix JavaScript/TypeScript code. This keeps your codebase clean and error-free.
+
+```bash
+pnpm lint:biome
+```
+
+`lint:prettier`
+
+Runs Prettier to format your code according to your project's style guide. This improves code readability and consistency.
+
+```bash
+pnpm lint:prettier
+```
+
+`lint`
+
+A combination of the style, Prettier, and Biome linting scripts, run together to ensure the entire codebase follows consistent style and format rules.
+
+```bash
+pnpm lint
+```

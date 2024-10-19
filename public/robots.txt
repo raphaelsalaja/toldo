@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://next-sylph-portfolio.vercel.app/
+
+# Sitemaps
+Sitemap: https://next-sylph-portfolio.vercel.app/sitemap.xml
