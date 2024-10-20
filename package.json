@@ -52,7 +52,8 @@
     "shiki": "^1.22.0",
     "tailwind-highlightjs": "^2.0.1",
     "tailwind-merge": "^2.5.4",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
