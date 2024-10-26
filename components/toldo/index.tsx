@@ -5,6 +5,7 @@ import type { HTMLMotionProps } from "framer-motion";
 import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import React from "react";
+import { STACK_OFFSETS } from "./constants";
 
 interface DialogProps {
   id: string;
@@ -123,13 +124,19 @@ const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props 
   return <motion.div {...props}>{children}</motion.div>;
 };
 
-interface DialogStackProps extends HTMLMotionProps<"ul"> {}
-const DialogStack: React.FC<DialogStackProps> = ({ ...rest }) => {
+interface DialogStackProps extends HTMLMotionProps<"ul"> {
+  offsets?: {
+    y: number;
+    scale: number;
+    opacity: number;
+  };
+}
+const DialogStack: React.FC<DialogStackProps> = ({ offsets = STACK_OFFSETS, ...props }) => {
   const { dialogs } = useDialogContext();
   const openDialogs = dialogs.filter((dialog) => dialog.open);
 
   return (
-    <motion.ul {...rest} className="fixed inset-0 flex items-center justify-center" data--toldo-dialog-stack>
+    <motion.ul {...props} className="fixed inset-0 flex items-center justify-center" data--toldo-dialog-stack>
       {openDialogs.map((dialog, index) => {
         const position = openDialogs.length - index - 1;
 
@@ -137,15 +144,15 @@ const DialogStack: React.FC<DialogStackProps> = ({ ...rest }) => {
           <motion.li
             key={dialog.id}
             initial={{
-              y: position * 40,
+              y: 0,
               scale: 0.85,
               opacity: position === 0 ? 1 : 0,
             }}
             animate={{
-              y: position * -40,
+              y: position * -offsets.y,
               zIndex: openDialogs.length - position,
-              scale: 1 - 0.15 * position,
-              opacity: 1 - 0.25 * position,
+              scale: 1 - offsets.scale * position,
+              opacity: 1 - offsets.opacity * position,
             }}
             transition={{
               ease: [0.19, 1, 0.22, 1],
