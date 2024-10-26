@@ -1,29 +1,25 @@
-import * as Toldo from "@/components/toldo";
+import * as Dialog from "@/components/toldo";
 
 export const ToldoExample = () => {
   return (
-    <Toldo.Root id="example" debug>
-      <Toldo.Trigger className="relative isolate flex h-72 w-72 bg-white">
-        <Toldo.Item
-          id="container"
-          className="h-full w-full bg-[#FFBEE8] p-4"
-          style={{
-            borderRadius: "32px",
-          }}
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <Dialog.Item
+          layoutId="container"
+          className="relative isolate flex h-[400px] w-[400px] border border-gray-4 bg-gray-2"
+          style={{ borderRadius: "8px" }}
         />
-      </Toldo.Trigger>
-      <Toldo.Portal>
-        <Toldo.Overlay />
-        <Toldo.Content className="relative isolate flex items-center">
-          <Toldo.Item
-            id="container"
-            className="h-[597px] w-[597px] bg-[#FFBEE8]"
-            style={{
-              borderRadius: "32px",
-            }}
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-gray-a4" />
+        <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2">
+          <Dialog.Item
+            layoutId="container"
+            className="relative isolate flex h-[600px] w-[600px] border border-gray-4 bg-gray-2"
+            style={{ borderRadius: "8px" }}
           />
-        </Toldo.Content>
-      </Toldo.Portal>
-    </Toldo.Root>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 };
