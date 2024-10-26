@@ -1,8 +1,8 @@
 import type { AnimationProps } from "framer-motion";
 
-const EASE: AnimationProps["transition"] = {
-  DURATION: 0.5,
-  EASE: [0.32, 0.72, 0, 1],
+const TRANSITION: AnimationProps["transition"] = {
+  ease: [0.19, 1, 0.22, 1],
+  duration: 0.4,
 };
 
 const STACK_Y_OFFSET = 8;

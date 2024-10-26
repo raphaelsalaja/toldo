@@ -1,11 +1,11 @@
 "use client";
 
-import type { HTMLMotionProps } from "framer-motion";
+import type { AnimationProps, HTMLMotionProps } from "framer-motion";
 
 import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import React from "react";
-import { STACK_OFFSETS } from "./constants";
+import { STACK_OFFSETS, TRANSITION } from "./constants";
 
 interface DialogProps {
   id: string;
@@ -121,7 +121,11 @@ const DialogDescription: React.FC<DialogDescriptionProps> = ({ children, ...prop
 
 interface DialogSharedItemProps extends HTMLMotionProps<"div"> {}
 const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props }) => {
-  return <motion.div {...props}>{children}</motion.div>;
+  return (
+    <motion.div data-toldo-dialog-shared-item {...props}>
+      {children}
+    </motion.div>
+  );
 };
 
 interface DialogStackProps extends HTMLMotionProps<"ul"> {
@@ -130,8 +134,14 @@ interface DialogStackProps extends HTMLMotionProps<"ul"> {
     scale: number;
     opacity: number;
   };
+  transition?: AnimationProps["transition"];
 }
-const DialogStack: React.FC<DialogStackProps> = ({ offsets = STACK_OFFSETS, ...props }) => {
+const DialogStack: React.FC<DialogStackProps> = ({
+  offsets = STACK_OFFSETS,
+
+  transition = TRANSITION,
+  ...props
+}) => {
   const { dialogs } = useDialogContext();
   const openDialogs = dialogs.filter((dialog) => dialog.open);
 
@@ -139,7 +149,6 @@ const DialogStack: React.FC<DialogStackProps> = ({ offsets = STACK_OFFSETS, ...p
     <motion.ul {...props} className="fixed inset-0 flex items-center justify-center" data--toldo-dialog-stack>
       {openDialogs.map((dialog, index) => {
         const position = openDialogs.length - index - 1;
-
         return (
           <motion.li
             key={dialog.id}
@@ -189,7 +198,7 @@ const DialogButton: React.FC<DialogButtonProps> = ({ kind = "default", dialogId,
   };
 
   return (
-    <motion.button type="button" {...props} onClick={handleClick}>
+    <motion.button data-toldo-dialog-button type="button" {...props} onClick={handleClick}>
       {children}
     </motion.button>
   );
