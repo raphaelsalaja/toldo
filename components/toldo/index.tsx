@@ -4,50 +4,12 @@ import type { HTMLMotionProps } from "framer-motion";
 
 import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
-import * as React from "react";
+import { useState } from "react";
 
-interface Dialog {
-  id: string;
-  content: React.ReactNode;
+interface DialogProps {
+  id?: string;
+  dialog?: React.ReactNode;
 }
-
-interface DialogContextProps {
-  addDialog: (dialog: Dialog) => void;
-  removeDialog: (id: string) => void;
-}
-
-const DialogContext = React.createContext<DialogContextProps | undefined>(undefined);
-
-const useDialogContext = (): DialogContextProps => {
-  const context = React.useContext(DialogContext);
-  if (!context) {
-    throw new Error("useDialogContext must be used within a Root");
-  }
-  return context;
-};
-
-const DialogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [dialogs, setDialogs] = React.useState<Dialog[]>([]);
-
-  const addDialog = (dialog: Dialog) => {
-    setDialogs((prev) => [...prev, dialog]);
-  };
-
-  const removeDialog = (id: string) => {
-    setDialogs((prev) => prev.filter((dialog) => dialog.id !== id));
-  };
-
-  return (
-    <DialogContext.Provider
-      value={{
-        addDialog,
-        removeDialog,
-      }}
-    >
-      {children}
-    </DialogContext.Provider>
-  );
-};
 
 interface DialogRootProps extends RadixDialogPrimitive.DialogProps {}
 const DialogRoot: React.FC<DialogRootProps> = ({ children, ...props }) => {
@@ -94,16 +56,102 @@ const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props 
   return <motion.div {...props}>{children}</motion.div>;
 };
 
+const useDialogStack = () => {
+  const [dialogs, setDialogs] = useState<DialogProps[]>([]);
+
+  const pushDialog = (dialog: DialogProps) => {
+    const dialogExists = dialogs.find((d) => d.id === dialog.id);
+
+    if (dialogExists) {
+      throw new Error(`Dialog with id ${dialog.id} already exists in the dialog stack.`);
+    }
+
+    setDialogs((prevDialogs) => [...prevDialogs, dialog]);
+  };
+
+  const popDialog = (id: string) => {
+    const dialog = dialogs.find((d) => d.id === id);
+
+    if (dialog) {
+      setDialogs((prevDialogs) => prevDialogs.filter((dialog) => dialog.id !== id));
+    } else {
+      throw new Error(`Dialog with id ${id} does not exist in the dialog stack.`);
+    }
+  };
+
+  return {
+    dialogs,
+    pushDialog,
+    popDialog,
+  };
+};
+
+interface DialogStackProps extends HTMLMotionProps<"ul"> {
+  dialogs: DialogProps[];
+  onDialogsChange?: (dialogs: DialogProps[]) => void;
+}
+const DialogStack: React.FC<DialogStackProps> = ({ dialogs, onDialogsChange, ...rest }) => {
+  return (
+    <motion.ul {...rest} className="fixed inset-0 flex items-center justify-center" data--toldo-dialog-stack>
+      {dialogs.map((dialog, index) => {
+        const position = dialogs.length - index - 1;
+
+        return (
+          <motion.li
+            key={dialog.id}
+            initial={{ y: position * 40, scale: 0.85 }}
+            animate={{
+              y: position * -40,
+              zIndex: dialogs.length - position,
+              scale: 1 - 0.15 * position,
+              opacity: 1 - 0.25 * position,
+            }}
+            data-toldo-dialog-stack-index={index}
+            className="absolute list-none"
+          >
+            {dialog.dialog}
+          </motion.li>
+        );
+      })}
+    </motion.ul>
+  );
+};
+
+interface DialogButtonProps extends HTMLMotionProps<"button"> {}
+const DialogButton: React.FC<DialogButtonProps> = ({ children, ...props }) => {
+  return (
+    <motion.button type="button" {...props}>
+      {children}
+    </motion.button>
+  );
+};
+
+export type {
+  DialogProps as Props,
+  DialogRootProps as RootProps,
+  DialogTriggerProps as TriggerProps,
+  DialogPortalProps as PortalProps,
+  DialogOverlayProps as OverlayProps,
+  DialogStackProps as StackProps,
+  DialogButtonProps as ButtonProps,
+  DialogContentProps as ContentProps,
+  DialogCloseProps as CloseProps,
+  DialogTitleProps as TitleProps,
+  DialogDescriptionProps as DescriptionProps,
+  DialogSharedItemProps as ItemProps,
+};
+
 export {
-  DialogProvider as Provider,
+  useDialogStack,
   DialogRoot as Root,
   DialogTrigger as Trigger,
   DialogPortal as Portal,
   DialogOverlay as Overlay,
+  DialogStack as Stack,
+  DialogButton as Button,
   DialogContent as Content,
   DialogClose as Close,
   DialogTitle as Title,
   DialogDescription as Description,
   DialogSharedItem as Item,
-  useDialogContext as useContext,
 };
