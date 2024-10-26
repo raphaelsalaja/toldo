@@ -20,7 +20,7 @@ interface DialogContextProps {
 }
 
 const DialogContext = React.createContext<DialogContextProps | undefined>(undefined);
-export const useDialogContext = (): DialogContextProps => {
+const useDialogContext = (): DialogContextProps => {
   const context = React.useContext(DialogContext);
   if (!context) {
     throw new Error("useDialogContext must be used within a DialogProvider");
@@ -32,7 +32,7 @@ interface DialogProviderProps {
   children: React.ReactNode;
   dialogs: DialogProps[];
 }
-export const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: initialDialogs }) => {
+const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: initialDialogs }) => {
   const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs);
 
   const openDialog = (id: string) => {
@@ -136,12 +136,20 @@ const DialogStack: React.FC<DialogStackProps> = ({ ...rest }) => {
         return (
           <motion.li
             key={dialog.id}
-            initial={{ y: position * 40, scale: 0.85 }}
+            initial={{
+              y: position * 40,
+              scale: 0.85,
+              opacity: position === 0 ? 1 : 0,
+            }}
             animate={{
               y: position * -40,
               zIndex: openDialogs.length - position,
               scale: 1 - 0.15 * position,
               opacity: 1 - 0.25 * position,
+            }}
+            transition={{
+              ease: [0.19, 1, 0.22, 1],
+              duration: 0.4,
             }}
             data-toldo-dialog-stack-index={index}
             className="absolute list-none"
