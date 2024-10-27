@@ -36,6 +36,7 @@ interface DialogContextProps {
 }
 
 const DialogContext = React.createContext<DialogContextProps | undefined>(undefined);
+
 const useDialogContext = (): DialogContextProps => {
   const context = React.useContext(DialogContext);
   if (!context) {
@@ -48,6 +49,7 @@ interface DialogProviderProps {
   children: React.ReactNode;
   dialogs: DialogProps[];
 }
+
 const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: initialDialogs }) => {
   const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs);
 
@@ -67,6 +69,7 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: init
 };
 
 interface DialogRootProps extends RadixDialogPrimitive.DialogProps {}
+
 const DialogRoot: React.FC<DialogRootProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Root {...props}>{children}</RadixDialogPrimitive.Root>;
 };
@@ -74,6 +77,7 @@ const DialogRoot: React.FC<DialogRootProps> = ({ children, ...props }) => {
 interface DialogTriggerProps extends RadixDialogPrimitive.DialogTriggerProps {
   dialogId?: string;
 }
+
 const DialogTrigger: React.FC<DialogTriggerProps> = ({ dialogId, children, ...props }) => {
   const { openDialog } = useDialogContext();
 
@@ -94,16 +98,19 @@ const DialogTrigger: React.FC<DialogTriggerProps> = ({ dialogId, children, ...pr
 };
 
 interface DialogPortalProps extends RadixDialogPrimitive.DialogPortalProps {}
+
 const DialogPortal: React.FC<DialogPortalProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Portal {...props}>{children}</RadixDialogPrimitive.Portal>;
 };
 
 interface DialogOverlayProps extends RadixDialogPrimitive.DialogOverlayProps {}
+
 const DialogOverlay: React.FC<DialogOverlayProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Overlay {...props}>{children}</RadixDialogPrimitive.Overlay>;
 };
 
 interface DialogContentProps extends RadixDialogPrimitive.DialogContentProps {}
+
 const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => {
   const { clearDialogs } = useDialogContext();
   return (
@@ -120,21 +127,25 @@ const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => 
 };
 
 interface DialogCloseProps extends RadixDialogPrimitive.DialogCloseProps {}
+
 const DialogClose: React.FC<DialogCloseProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Close {...props}>{children}</RadixDialogPrimitive.Close>;
 };
 
 interface DialogTitleProps extends RadixDialogPrimitive.DialogTitleProps {}
+
 const DialogTitle: React.FC<DialogTitleProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Title {...props}>{children}</RadixDialogPrimitive.Title>;
 };
 
 interface DialogDescriptionProps extends RadixDialogPrimitive.DialogDescriptionProps {}
+
 const DialogDescription: React.FC<DialogDescriptionProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Description {...props}>{children}</RadixDialogPrimitive.Description>;
 };
 
 interface DialogSharedItemProps extends HTMLMotionProps<"div"> {}
+
 const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props }) => {
   return (
     <motion.div data-toldo-dialog-shared-item {...props}>
@@ -151,6 +162,7 @@ interface DialogStackProps extends HTMLMotionProps<"ul"> {
   };
   transition?: AnimationProps["transition"];
 }
+
 const DialogStack: React.FC<DialogStackProps> = ({
   offsets = STACK_OFFSETS,
 
@@ -213,6 +225,7 @@ interface DialogButtonProps extends HTMLMotionProps<"button"> {
   kind?: "default" | "open" | "close";
   dialogId?: string;
 }
+
 const DialogButton: React.FC<DialogButtonProps> = ({ kind = "default", dialogId, children, ...props }) => {
   const { openDialog, closeDialog } = useDialogContext();
 
@@ -250,6 +263,7 @@ export type {
   DialogDescriptionProps as DescriptionProps,
   DialogSharedItemProps as ItemProps,
 };
+
 export {
   DialogProvider as Provider,
   DialogRoot as Root,
