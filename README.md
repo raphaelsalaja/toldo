@@ -1,45 +1,81 @@
-<p align="center">
-<img src=".github/assets/readme.png">
-<a href="https://github.com/sponsors/raphaelsalaja">
-    <picture>
-        <img src="https://github.com/user-attachments/assets/e9754454-5f51-4166-8194-0f3ba1db82dc" alt="Sponsor" height="30">
-    </picture>
-</a>
-<a href="https://vercel.com/new/clone?repository-url=https://github.com/raphaelsalaja/sylph&env=NEXT_PUBLIC_SITE_URL&project-name=portfolio&repository-name=portfolio&redirect-url=https://twitter.com/raphaelsalaja&demo-title=next-slyph-portfolio&demo-description=A+minimal+blog+built+with+Next.js.&demo-url=https://next-sylph-portfolio.vercel.app&demo-image=https://raw.githubusercontent.com/raphaelsalaja/sylph/refs/heads/main/.github/assets/readme.png&teamSlug=raphael-salaja">
-    <picture>
-        <img src="https://github.com/user-attachments/assets/7ea626bf-b827-4995-b0d0-6eea0c0ba2d5" alt="Deploy" height="30">
-    </picture>
-</a>
-<a href="https://x.com/raphaelsalaja">
-    <picture>
-        <img src="https://github.com/user-attachments/assets/8d599ebf-b73e-4c05-8297-867b5846b7c4" alt="Twitter" height="30">
-    </picture>
-</a>
-</p>
+# Turborepo starter
 
-A minimal and lightweight portfolio template designed for developers, designers, and creatives. It offers a clean, modern interface to showcase your work, share your ideas, and write blog posts.
+This is an official starter Turborepo.
 
-Built using Next.js, Sylph is optimized for performance and developer experience, providing flexibility and ease of use whether you're showcasing projects or writing content.
+## Using this example
 
-## Features
+Run the following command:
 
-- **Responsive Design**: Works seamlessly on all devices and browsers.
-- **MDX and Markdown Support**: Write posts using MDX or Markdown, with extensive flexibility.
-- **Optimized for SEO**: Includes sitemaps, robots.txt, and metadata for better search engine visibility.
-- **Dynamic OpenGraph (OG) Images**: Automatically generate OG images for social media sharing.
-- **Syntax Highlighting**: Built-in support for highlighting code blocks.
-- **Tailwind v4**: Fully configured with the latest version of Tailwind CSS for efficient styling.
-- **Automated Blog Time Dating**: Automatically manage post creation and updated timestamps.
-- **Extensive Frontmatter**: Customize posts with rich metadata and organizational fields.
-- **Clean and Simple Structure**: Easy-to-navigate codebase for efficient customization.
-- **Light and Dark Mode**: Simple theming with light/dark mode toggle support.
-- **Foundations for Expansion**: Built with flexibility in mind, allowing easy expansion and customization.
-- **Theming**: Easily extend or customize themes to suit your brand.
+```sh
+npx create-turbo@latest
+```
 
-## Documentation
+## What's inside?
 
-To get started with Sylph, check out the [Guides](https://next-sylph-portfolio.vercel.app/guides).
+This Turborepo includes the following packages/apps:
 
-## Sponsor
+### Apps and Packages
 
-If you find this project helpful, consider supporting the project. Your contribution helps maintain the project and supports future development.
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm build
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm dev
+```
+
+### Remote Caching
+
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
+```
+cd my-turborepo
+npx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)

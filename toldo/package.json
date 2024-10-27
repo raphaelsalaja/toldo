@@ -1,0 +1,52 @@
+{
+  "name": "toldo",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsup index.tsx",
+    "dev:watch": "tsup index.tsx --watch",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "exports": {
+    ".": "./index.tsx"
+  },
+  "keywords": [
+    "react",
+    "modal",
+    "motion",
+    "dialog",
+    "overlay"
+  ],
+  "author": "Raphael Salaja <rapahaelsalaja@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://toldo.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelsalaja/toldo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raphaelsalaja/toldo/issues"
+  },
+  "dependencies": {
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "framer-motion": "12.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
+    "turbo": "^2.2.3",
+    "typescript": "5.6.3"
+  },
+  "packageManager": "pnpm@9.1.2",
+  "engines": {
+    "node": ">=18"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@19.0.0-rc.1",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    }
+  }
+}
