@@ -18,34 +18,6 @@ importers:
         specifier: 5.6.3
         version: 5.6.3
 
-  toldo:
-    dependencies:
-      '@radix-ui/react-dialog':
-        specifier: ^1.1.2
-        version: 1.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
-      framer-motion:
-        specifier: 12.0.0-alpha.1
-        version: 12.0.0-alpha.1(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
-      react:
-        specifier: 19.0.0-rc-69d4b800-20241021
-        version: 19.0.0-rc-69d4b800-20241021
-    devDependencies:
-      '@types/react':
-        specifier: npm:types-react@19.0.0-rc.1
-        version: types-react@19.0.0-rc.1
-      prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
-      tsup:
-        specifier: ^8.3.5
-        version: 8.3.5(jiti@2.3.3)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0)
-      turbo:
-        specifier: ^2.2.3
-        version: 2.2.3
-      typescript:
-        specifier: 5.6.3
-        version: 5.6.3
-
   website:
     dependencies:
       '@mdx-js/loader':
@@ -165,6 +137,9 @@ importers:
       tailwind-merge:
         specifier: ^2.5.4
         version: 2.5.4
+      toldo:
+        specifier: 0.0.2
+        version: 0.0.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -220,9 +195,6 @@ importers:
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14(ts-node@10.9.2(@types/node@22.8.1)(typescript@5.6.3))
-      toldo:
-        specifier: workspace:*
-        version: link:../toldo
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(jiti@2.3.3)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.6.0)
@@ -3665,6 +3637,10 @@ packages:
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
+
+  toldo@0.0.2:
+    resolution: {integrity: sha512-+LEM5KZFxtiZjcUDuE8Y8M92t8uB0shLvPzp8k61+GN6vcqBdMZYw4vlAGPu4ZGfOUeSkYQ5ockUE7TMCdnNaQ==}
+    engines: {node: '>=18'}
 
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
@@ -7949,6 +7925,17 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  toldo@0.0.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1):
+    dependencies:
+      '@radix-ui/react-dialog': 1.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
+      framer-motion: 12.0.0-alpha.1(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+      react: 19.0.0-rc-69d4b800-20241021
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - '@types/react'
+      - '@types/react-dom'
+      - react-dom
 
   tr46@0.0.3: {}
 

@@ -1,6 +1,6 @@
 {
   "name": "toldo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "build": "tsup index.tsx",
     "dev:watch": "tsup index.tsx --watch",
@@ -8,8 +8,15 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "exports": {
-    ".": "./index.tsx"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "react",
     "modal",
