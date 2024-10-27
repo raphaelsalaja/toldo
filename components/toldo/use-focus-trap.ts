@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const useFocusTrap = (modalRef: React.RefObject<HTMLElement>, isOpen: boolean) => {
+export const useFocusTrap = (modalRef: React.RefObject<HTMLElement | null>, isOpen: boolean) => {
   useEffect(() => {
     const handleFocusTrap = (event: KeyboardEvent) => {
       if (!modalRef.current) return;

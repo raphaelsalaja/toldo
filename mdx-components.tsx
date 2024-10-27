@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
+import type { JSX } from "react";
 import type { PluggableList } from "unified";
 
 import FootnoteBackReference from "@/components/footnote/back-reference";

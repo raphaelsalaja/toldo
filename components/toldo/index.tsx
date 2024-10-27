@@ -5,6 +5,7 @@ import type { AnimationProps, HTMLMotionProps } from "framer-motion";
 import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import React from "react";
+
 import { STACK_OFFSETS, TRANSITION } from "./constants";
 
 interface DialogProps {
