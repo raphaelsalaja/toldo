@@ -5,7 +5,7 @@ const TRANSITION: AnimationProps["transition"] = {
   duration: 0.4,
 };
 
-const STACK_Y_OFFSET = 8;
+const STACK_Y_OFFSET = 24;
 const STACK_SCALE_OFFSET = 0.05;
 const STACK_OPACITY_OFFSET = 0.1;
 
