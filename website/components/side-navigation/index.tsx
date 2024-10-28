@@ -1,24 +1,52 @@
+"use client";
+
 import { navigation } from "@/lib/navigation";
 
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
+
 export const SideNavigation = () => {
+  const path = usePathname();
+
   return (
-    <nav className="sticky top-0 h-full w-64 bg-gray-800 text-white">
-      <ul>
-        {navigation.map((section) => (
-          <li key={section.title}>
-            <h2 className="p-4 font-bold text-lg">{section.title}</h2>
-            <ul>
-              {section.items.map((item) => (
-                <li key={item.title}>
-                  <a href={item.href} className="block p-4 hover:bg-gray-700">
+    <nav className="flex h-full flex-col gap-8 text-white">
+      {navigation.map((section) => (
+        <div key={section.title}>
+          <div className="mb-2">{section.title}</div>
+          <div className="flex flex-col ">
+            {section.items.map((item) => {
+              const first = section.items[0] === item;
+              const last = section.items[section.items.length - 1] === item;
+              const active = path === item.href;
+              return (
+                <div
+                  key={item.title}
+                  className={clsx(
+                    "relative",
+                    "before:pointer-events-none before:absolute before:bottom-0 before:left-1 before:z-10 before:w-px before:bg-border",
+                    first ? "before:top-2" : "before:top-0 ",
+                    last ? "before:bottom-2" : "before:bottom-0 ",
+                  )}
+                >
+                  <a
+                    className={clsx(
+                      "before:-z-10 relative flex overflow-hidden",
+                      "rounded-md py-2 pr-2 pl-6 transition-colors",
+                      "after:absolute after:inset-y-2 after:left-1 after:z-10 after:w-px after:transition-colors",
+                      "hover:text-foreground hover:opacity-100",
+                      active && "text-foreground after:bg-foreground",
+                      !active && "text-muted",
+                    )}
+                    href={item.href}
+                  >
                     {item.title}
                   </a>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
     </nav>
   );
 };

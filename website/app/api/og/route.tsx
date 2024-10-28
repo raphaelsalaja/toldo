@@ -23,7 +23,6 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const parameters: Parameters = Object.fromEntries(searchParams);
     const { title } = parameters;
-    console.log(parameters);
 
     /*
      * Finally we are fetching the font file from the public directory.

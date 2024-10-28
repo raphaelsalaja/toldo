@@ -11,11 +11,6 @@ export type Post = {
     handle?: string;
   };
 
-  time: {
-    created: string;
-    updated: string;
-  };
-
   media?: {
     image?: string;
     video?: string;

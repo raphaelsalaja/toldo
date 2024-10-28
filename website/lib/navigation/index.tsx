@@ -14,7 +14,7 @@ export const navigation: NavigationSection[] = [
     items: [
       {
         title: "Introduction",
-        href: "/",
+        href: "/introduction",
       },
       {
         title: "Installation",
@@ -38,12 +38,12 @@ export const navigation: NavigationSection[] = [
         href: "/route-based",
       },
       {
-        title: "Shared Layout",
-        href: "/shared-layout",
+        title: "Shared Animation",
+        href: "/shared-animation",
       },
       {
-        title: "Stacked",
-        href: "/stackable",
+        title: "Stacked Layout",
+        href: "/stacked-layout",
       },
     ],
   },
