@@ -10,11 +10,9 @@ function readFile(filePath: string): Post | null {
     const rawContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(rawContent);
 
-    const slug = path.basename(filePath, path.extname(filePath));
-
     return {
       ...data,
-      slug,
+      slug: path.basename(filePath, ".mdx"),
       content,
     } as Post;
   } catch (error) {
@@ -32,7 +30,10 @@ function getFiles(dir: string): string[] {
   }
 }
 
-export function getPosts(directory: string): Post[] {
-  const files = getFiles(path.join(process.cwd(), "app", "(posts)", directory, "posts"));
-  return files.map((file) => readFile(path.join(process.cwd(), "app", "(posts)", directory, "posts", file))).filter((post): post is Post => post !== null);
+export function getDocumentation(): Post[] {
+  const files = getFiles(path.join(process.cwd(), "mdx"));
+
+  return files
+    .map((file) => readFile(path.join(process.cwd(), "mdx", file)))
+    .filter((post): post is Post => post !== null);
 }
