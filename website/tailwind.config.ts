@@ -166,6 +166,16 @@ const config: Config = {
           lineHeight: "21px",
           letterSpacing: "-0.09px",
         },
+        ".text-large": {
+          fontSize: "16px",
+          lineHeight: "24px",
+          letterSpacing: "-0.18px",
+        },
+        ".text-huge": {
+          fontSize: "24px",
+          lineHeight: "36px",
+          letterSpacing: "-0.47px",
+        },
       });
     }),
   ],

@@ -58,13 +58,24 @@
 
   html {
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-    scrollbar-gutter: stable;
     scrollbar-width: thin;
     scroll-behavior: smooth;
   }
 
   html {
     @apply text-default text-foreground bg-background;
+
+    h1 {
+      @apply text-huge;
+    }
+
+    h2 {
+      @apply text-large;
+    }
+
+    p {
+      @apply text-default;
+    }
 
     h1,
     h2,

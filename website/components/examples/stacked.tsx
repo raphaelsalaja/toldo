@@ -4,7 +4,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { PlusIcon } from "lucide-react";
 import * as Dialog from "toldo";
 
-export const ToldoExample = () => {
+export const StackedExample = () => {
   const dialogs: Dialog.Props[] = [
     {
       id: "dialog-one",
@@ -54,7 +54,7 @@ export const ToldoExample = () => {
           <Dialog.Item className="relative isolate flex h-[400px] w-[400px] border border-gray-4 bg-gray-2" />
         </Dialog.Trigger>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-gray-a4" />
+          <Dialog.Overlay className="fixed inset-0 bg-gray-a2 backdrop-blur-[1px]" />
           <Dialog.Stack />
         </Dialog.Portal>
       </Dialog.Root>

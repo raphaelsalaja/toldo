@@ -35,7 +35,9 @@ interface DialogContextProps {
   clearDialogs: () => void;
 }
 
-const DialogContext = React.createContext<DialogContextProps | undefined>(undefined);
+const DialogContext = React.createContext<DialogContextProps | undefined>(
+  undefined
+);
 
 const useDialogContext = (): DialogContextProps => {
   const context = React.useContext(DialogContext);
@@ -45,40 +47,66 @@ const useDialogContext = (): DialogContextProps => {
   return context;
 };
 
-interface DialogProviderProps {
-  children: React.ReactNode;
-  dialogs: DialogProps[];
+interface DialogProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+  dialogs?: DialogProps[];
 }
 
-const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: initialDialogs }) => {
+const DialogProvider: React.FC<DialogProviderProps> = ({
+  children,
+  dialogs: initialDialogs,
+}) => {
   const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs);
 
   const openDialog = (id: string) => {
-    setDialogs((prevDialogs) => prevDialogs.map((dialog) => (dialog.id === id ? { ...dialog, open: true } : dialog)));
+    setDialogs((prevDialogs) =>
+      prevDialogs.map((dialog) =>
+        dialog.id === id ? { ...dialog, open: true } : dialog
+      )
+    );
   };
 
   const closeDialog = (id: string) => {
-    setDialogs((prevDialogs) => prevDialogs.map((dialog) => (dialog.id === id ? { ...dialog, open: false } : dialog)));
+    setDialogs((prevDialogs) =>
+      prevDialogs.map((dialog) =>
+        dialog.id === id ? { ...dialog, open: false } : dialog
+      )
+    );
   };
 
   const clearDialogs = () => {
-    setDialogs((prevDialogs) => prevDialogs.map((dialog) => ({ ...dialog, open: false })));
+    if (dialogs) {
+      setDialogs((prevDialogs) =>
+        prevDialogs.map((dialog) => ({ ...dialog, open: false }))
+      );
+    }
   };
 
-  return <DialogContext.Provider value={{ dialogs, openDialog, closeDialog, clearDialogs }}>{children}</DialogContext.Provider>;
+  return (
+    <DialogContext.Provider
+      value={{ dialogs, openDialog, closeDialog, clearDialogs }}
+    >
+      {children}
+    </DialogContext.Provider>
+  );
 };
 
 interface DialogRootProps extends RadixDialogPrimitive.DialogProps {}
 
 const DialogRoot: React.FC<DialogRootProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Root {...props}>{children}</RadixDialogPrimitive.Root>;
+  return (
+    <RadixDialogPrimitive.Root {...props}>{children}</RadixDialogPrimitive.Root>
+  );
 };
 
 interface DialogTriggerProps extends RadixDialogPrimitive.DialogTriggerProps {
   dialogId?: string;
 }
 
-const DialogTrigger: React.FC<DialogTriggerProps> = ({ dialogId, children, ...props }) => {
+const DialogTrigger: React.FC<DialogTriggerProps> = ({
+  dialogId,
+  children,
+  ...props
+}) => {
   const { openDialog } = useDialogContext();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -100,18 +128,42 @@ const DialogTrigger: React.FC<DialogTriggerProps> = ({ dialogId, children, ...pr
 interface DialogPortalProps extends RadixDialogPrimitive.DialogPortalProps {}
 
 const DialogPortal: React.FC<DialogPortalProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Portal {...props}>{children}</RadixDialogPrimitive.Portal>;
+  return (
+    <RadixDialogPrimitive.Portal {...props}>
+      {children}
+    </RadixDialogPrimitive.Portal>
+  );
 };
 
-interface DialogOverlayProps extends RadixDialogPrimitive.DialogOverlayProps {}
+interface DialogOverlayProps extends RadixDialogPrimitive.DialogOverlayProps {
+  animation?: AnimationProps;
+}
 
-const DialogOverlay: React.FC<DialogOverlayProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Overlay {...props}>{children}</RadixDialogPrimitive.Overlay>;
+const DialogOverlay: React.FC<DialogOverlayProps> = ({
+  animation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: TRANSITION,
+  },
+  children,
+  ...props
+}) => {
+  return (
+    <motion.div {...animation}>
+      <RadixDialogPrimitive.Overlay {...props}>
+        {children}
+      </RadixDialogPrimitive.Overlay>
+    </motion.div>
+  );
 };
 
 interface DialogContentProps extends RadixDialogPrimitive.DialogContentProps {}
 
-const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => {
+const DialogContent: React.FC<DialogContentProps> = ({
+  children,
+  ...props
+}) => {
   const { clearDialogs } = useDialogContext();
   return (
     <RadixDialogPrimitive.Content
@@ -129,24 +181,43 @@ const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => 
 interface DialogCloseProps extends RadixDialogPrimitive.DialogCloseProps {}
 
 const DialogClose: React.FC<DialogCloseProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Close {...props}>{children}</RadixDialogPrimitive.Close>;
+  return (
+    <RadixDialogPrimitive.Close {...props}>
+      {children}
+    </RadixDialogPrimitive.Close>
+  );
 };
 
 interface DialogTitleProps extends RadixDialogPrimitive.DialogTitleProps {}
 
 const DialogTitle: React.FC<DialogTitleProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Title {...props}>{children}</RadixDialogPrimitive.Title>;
+  return (
+    <RadixDialogPrimitive.Title {...props}>
+      {children}
+    </RadixDialogPrimitive.Title>
+  );
 };
 
-interface DialogDescriptionProps extends RadixDialogPrimitive.DialogDescriptionProps {}
+interface DialogDescriptionProps
+  extends RadixDialogPrimitive.DialogDescriptionProps {}
 
-const DialogDescription: React.FC<DialogDescriptionProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Description {...props}>{children}</RadixDialogPrimitive.Description>;
+const DialogDescription: React.FC<DialogDescriptionProps> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <RadixDialogPrimitive.Description {...props}>
+      {children}
+    </RadixDialogPrimitive.Description>
+  );
 };
 
 interface DialogSharedItemProps extends HTMLMotionProps<"div"> {}
 
-const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props }) => {
+const DialogSharedItem: React.FC<DialogSharedItemProps> = ({
+  children,
+  ...props
+}) => {
   return (
     <motion.div data-toldo-dialog-shared-item {...props}>
       {children}
@@ -165,7 +236,6 @@ interface DialogStackProps extends HTMLMotionProps<"ul"> {
 
 const DialogStack: React.FC<DialogStackProps> = ({
   offsets = STACK_OFFSETS,
-
   transition = TRANSITION,
   ...props
 }) => {
@@ -226,7 +296,12 @@ interface DialogButtonProps extends HTMLMotionProps<"button"> {
   dialogId?: string;
 }
 
-const DialogButton: React.FC<DialogButtonProps> = ({ kind = "default", dialogId, children, ...props }) => {
+const DialogButton: React.FC<DialogButtonProps> = ({
+  kind = "default",
+  dialogId,
+  children,
+  ...props
+}) => {
   const { openDialog, closeDialog } = useDialogContext();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -242,7 +317,12 @@ const DialogButton: React.FC<DialogButtonProps> = ({ kind = "default", dialogId,
   };
 
   return (
-    <motion.button data-toldo-dialog-button type="button" {...props} onClick={handleClick}>
+    <motion.button
+      data-toldo-dialog-button
+      type="button"
+      {...props}
+      onClick={handleClick}
+    >
       {children}
     </motion.button>
   );

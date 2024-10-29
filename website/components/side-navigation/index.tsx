@@ -2,15 +2,9 @@
 
 import { navigation } from "@/lib/navigation";
 
-import * as npm from "^/src/package.json";
+import npm from "^/src/package.json";
 import clsx from "clsx";
-import { Caveat, Indie_Flower, Shadows_Into_Light } from "next/font/google";
 import { usePathname } from "next/navigation";
-
-const handwriting = Indie_Flower({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 export const SideNavigation = () => {
   const path = usePathname();
@@ -19,15 +13,9 @@ export const SideNavigation = () => {
 
   return (
     <nav className="sticky flex h-full flex-col gap-8 text-white">
-      <div className={"gap-2 flex items-center"}>
-        <div
-          className={clsx("tracking-normal   text-2xl", handwriting.className)}
-        >
-          Todlo
-        </div>
-        <span className=" text-[10px]  leading-none flex  items-center bg-pink-3 px-2 py-1 text-pink-11 rounded-full">
-          {version}
-        </span>
+      <div className={"flex items-center gap-2"}>
+        Todlo
+        <span className=" flex items-center rounded-full bg-pink-3 px-2 py-1 text-[10px] text-pink-11 leading-none">{version}</span>
       </div>
       {navigation.map((section) => (
         <div key={section.title}>

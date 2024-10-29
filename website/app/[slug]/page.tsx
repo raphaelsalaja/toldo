@@ -21,9 +21,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: PageProps) {
   const params = await props.params;
-  const document = Documentation.find(
-    (post: { slug: string }) => post.slug === params.slug,
-  );
+  const document = Documentation.find((post: { slug: string }) => post.slug === params.slug);
   const title = document ? document.title : "";
   const image = `${process.env.NEXT_PUBLIC_SITE_URL}api/og?title=${encodeURIComponent(title)}`;
 
@@ -43,9 +41,7 @@ export async function generateMetadata(props: PageProps) {
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const post = Documentation.find(
-    (post: { slug: string }) => post.slug === params.slug,
-  );
+  const post = Documentation.find((post: { slug: string }) => post.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -56,6 +52,7 @@ export default async function Page(props: PageProps) {
       <div className="flex flex-col">
         <div>
           <h1>{post.title}</h1>
+          <h2>{post.summary}</h2>
         </div>
         <div className="mt-1 flex gap-2 text-muted text-small">
           {/* <PublishedTime />

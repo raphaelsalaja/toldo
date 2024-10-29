@@ -1,9 +1,9 @@
+import { StackedExample } from "@/components/examples/stacked";
 import FootnoteBackReference from "@/components/footnote/back-reference";
 import FootnoteForwardReference from "@/components/footnote/forward-reference";
 import MDXImage from "@/components/image";
 import Link from "@/components/link";
 import Preview from "@/components/preview";
-import { ToldoExample } from "@/components/toldo/example";
 import { cn } from "@/lib/cn";
 
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -12,10 +12,11 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+import { BasicExample } from "./components/examples/basic";
+
 const components = {
-  ToldoExample: () => {
-    return <ToldoExample />;
-  },
+  BasicExample: () => <BasicExample />,
+  StackedExample: () => <StackedExample />,
   PreviewExample: () => {
     return (
       <div className="min- flex h-10 w-32 items-center justify-center rounded-lg border border-yellow-6 bg-yellow-3 text-yellow-11">
