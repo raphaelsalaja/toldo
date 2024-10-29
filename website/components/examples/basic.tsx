@@ -4,23 +4,33 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import * as Dialog from "toldo";
 
 export const BasicExample = () => {
-  return (
-    <Dialog.Provider>
-      <Dialog.Root>
-        <Dialog.Trigger className="rounded-xl border border-gray-2 bg-gradient-to-t bg-gray-2 from-gray-2 to-gray-3 px-4 py-2 shadow-[0px_1px_0px_0px_var(--gray-4)_inset] transition-opacity ease-in-out hover:opacity-80">
-          Open Dialog
-        </Dialog.Trigger>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-gray-a2 backdrop-blur-[1px]" />
-          <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 max-h-[85vh] w-[90vw] max-w-[450px] rounded-md bg-gray-1 p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow">
-            <Dialog.Title className="font-semibold text-lg">Dialog Title</Dialog.Title>
-            <Dialog.Description className="mt-1 text-sm">Dialog description goes here.</Dialog.Description>
-            <Dialog.Close className="absolute top-4 right-4">
-              <Cross2Icon />
-            </Dialog.Close>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
-    </Dialog.Provider>
-  );
+	return (
+		<Dialog.Provider>
+			<Dialog.Root>
+				<Dialog.Trigger className="rounded-xl border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-4 py-2 transition-all ease-in-out hover:brightness-95">
+					Open Dialog
+				</Dialog.Trigger>
+				<Dialog.Portal>
+					<Dialog.Overlay className="fixed inset-0 bg-gray-a2" />
+					<Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 flex flex-col bg-gray-1 border-gray-3 border rounded-xl p-4">
+						<Dialog.Title className="font-semibold text-lg">
+							Dialog Title
+						</Dialog.Title>
+						<Dialog.Description className="mt-1 text-base">
+							Enim sint quis eu culpa amet ea reprehenderit proident sit laboris
+							adipisicing pariatur nulla sunt. Excepteur mollit fugiat mollit
+							tempor nisi nostrud amet Lorem est voluptate fugiat aliqua.
+							Occaecat consequat est pariatur consequat fugiat non est amet
+							nulla consequat minim minim minim ad eiusmod. Amet velit elit
+							aliqua eu minim id proident. Sint est reprehenderit adipisicing
+							nisi.
+						</Dialog.Description>
+						<Dialog.Close className="rounded-xl border border-red-3 bg-gradient-to-t bg-red-3 from-red-1 to-red-2 px-4 py-2 transition-all ease-in-out hover:brightness-95">
+							Cancel
+						</Dialog.Close>
+					</Dialog.Content>
+				</Dialog.Portal>
+			</Dialog.Root>
+		</Dialog.Provider>
+	);
 };

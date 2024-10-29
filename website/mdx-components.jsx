@@ -54,12 +54,8 @@ const components = {
       <table className={cn("w-full overflow-hidden", className)} {...props} />
     </div>
   ),
-  th: ({ className, ...props }) => (
-    <th className={cn("border border-border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />
-  ),
-  td: ({ className, ...props }) => (
-    <td className={cn("border border-border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />
-  ),
+  th: ({ className, ...props }) => <th className={cn("border border-border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />,
+  td: ({ className, ...props }) => <td className={cn("border border-border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />,
   ol: ({ className, ...props }) => {
     if (React.Children.toArray(props.children).some((child) => React.isValidElement(child) && child.props.id?.includes("user-content-fn-"))) {
       return (
