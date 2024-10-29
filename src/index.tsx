@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import type { AnimationProps, HTMLMotionProps } from "framer-motion";
+import type { Primitive } from "@radix-ui/react-primitive";
 
 const EASE_TRANSITION: AnimationProps["transition"] = {
 	ease: [0.19, 1, 0.22, 1],
@@ -151,23 +152,26 @@ const DialogOverlay: React.FC<DialogOverlayProps> = ({
 
 type DialogContentProps = RadixDialogPrimitive.DialogContentProps;
 
-const DialogContent: React.FC<DialogContentProps> = ({
-	children,
-	...props
-}) => {
-	const { clearDialogs } = useDialogContext();
-	return (
-		<RadixDialogPrimitive.Content
-			onOpenAutoFocus={(event) => event.preventDefault()}
-			onPointerDownOutside={(event) => {
-				clearDialogs();
-			}}
-			{...props}
-		>
-			{children}
-		</RadixDialogPrimitive.Content>
-	);
-};
+const Content = React.forwardRef<HTMLDivElement, DialogContentProps>(
+	({ children, ...props }, ref) => {
+		const { clearDialogs } = useDialogContext();
+		return (
+			<RadixDialogPrimitive.Content
+				ref={ref}
+				onOpenAutoFocus={(event) => event.preventDefault()}
+				onPointerDownOutside={(event) => {
+					clearDialogs();
+				}}
+				{...props}
+			>
+				{children}
+			</RadixDialogPrimitive.Content>
+		);
+	},
+);
+Content.displayName = "Content";
+
+const DialogContent = motion.create(Content, { forwardMotionProps: true });
 
 type DialogCloseProps = RadixDialogPrimitive.DialogCloseProps;
 
@@ -187,6 +191,16 @@ const DialogTitle: React.FC<DialogTitleProps> = ({ children, ...props }) => {
 			{children}
 		</RadixDialogPrimitive.Title>
 	);
+};
+
+type DialogSubtitleProps = React.ComponentPropsWithoutRef<typeof Primitive.h3> &
+	React.HTMLAttributes<HTMLHeadingElement>;
+
+const DialogSubtitle: React.FC<DialogSubtitleProps> = ({
+	children,
+	...props
+}) => {
+	return <div {...props}>{children}</div>;
 };
 
 type DialogDescriptionProps = RadixDialogPrimitive.DialogDescriptionProps;
@@ -333,6 +347,7 @@ export {
 	DialogContent as Content,
 	DialogClose as Close,
 	DialogTitle as Title,
+	DialogSubtitle as Subtitle,
 	DialogDescription as Description,
 	DialogSharedItem as Item,
 };
@@ -349,6 +364,7 @@ export type {
 	DialogContentProps as ContentProps,
 	DialogCloseProps as CloseProps,
 	DialogTitleProps as TitleProps,
+	DialogSubtitleProps as SubtitleProps,
 	DialogDescriptionProps as DescriptionProps,
 	DialogSharedItemProps as ItemProps,
 };

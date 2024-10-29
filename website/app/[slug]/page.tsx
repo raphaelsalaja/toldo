@@ -54,13 +54,6 @@ export default async function Page(props: PageProps) {
           <h1>{post.title}</h1>
           <h2>{post.summary}</h2>
         </div>
-        <div className="mt-1 flex gap-2 text-muted text-small">
-          {/* <PublishedTime />
-          <Seperator />
-          <UpdateTime />
-          <Seperator />
-          <ReadingTime /> */}
-        </div>
       </div>
 
       <MDX source={post.content} />

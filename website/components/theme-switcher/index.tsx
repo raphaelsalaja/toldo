@@ -1,11 +1,9 @@
 "use client";
 
-import type React from "react";
-
 import { cn } from "@/lib/cn";
 
 import { Monitor, Moon, Sun } from "lucide-react";
-import { ThemeProvider, useTheme } from "next-themes";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export const AppThemeSwitcher = () => {
@@ -36,17 +34,5 @@ export const AppThemeSwitcher = () => {
         </button>
       ))}
     </span>
-  );
-};
-
-export const AppThemeProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  return (
-    <ThemeProvider enableSystem={true} attribute="class" storageKey="theme" defaultTheme="system">
-      {children}
-    </ThemeProvider>
   );
 };
