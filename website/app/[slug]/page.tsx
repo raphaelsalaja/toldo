@@ -1,9 +1,9 @@
-import type { Post } from "@/types";
+import type { Post } from "@/types/post";
 
 import { getDocumentation } from "@/lib/mdx";
 import { OpenGraph } from "@/lib/og";
-import { MDX } from "@/mdx-components";
 
+import { MDX } from "@/components/mdx";
 import { notFound } from "next/navigation";
 import React from "react";
 

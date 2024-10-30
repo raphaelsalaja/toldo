@@ -3,7 +3,7 @@
 import { AppThemeSwitcher } from "@/components/theme-switcher";
 import { navigation } from "@/lib/navigation";
 
-import npm from "^/src/package.json";
+import npm from "^/packages/toldo/package.json";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 

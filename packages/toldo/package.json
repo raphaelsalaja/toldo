@@ -1,0 +1,46 @@
+{
+  "name": "toldo",
+  "version": "0.0.2",
+  "scripts": {
+    "build": "tsup index.tsx",
+    "lint": "pnpm biome check --write ."
+  },
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "keywords": ["react", "modal", "motion", "dialog", "overlay"],
+  "author": "Raphael Salaja <rapahaelsalaja@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://toldo.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelsalaja/toldo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raphaelsalaja/toldo/issues"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-primitive": "^2.0.0",
+    "@workspace/configs": "workspace:*",
+    "framer-motion": "12.0.0-alpha.1",
+    "react": "19.0.0-rc-69d4b800-20241021"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
+    "turbo": "^2.2.3",
+    "typescript": "5.6.3"
+  },
+  "packageManager": "pnpm@9.1.2",
+  "engines": {
+    "node": ">=18"
+  }
+}

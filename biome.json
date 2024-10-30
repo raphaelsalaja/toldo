@@ -7,13 +7,12 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["node_modules", "dist"]
+    "ignore": ["node_modules", "dist", ".next", ".vercel", ".pnpm"]
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 240
+    "indentWidth": 2
   },
   "organizeImports": {
     "enabled": true

@@ -1,7 +1,6 @@
 import { StackedExample } from "@/components/examples/stacked";
-import MDXImage from "@/components/image";
+
 import Link from "@/components/link";
-import Preview from "@/components/preview";
 import { cn } from "@/lib/cn";
 
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -9,13 +8,13 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
-import { BasicExample } from "./components/examples/basic";
+import ComponentContainer from "@/components/component-container";
+import { BasicExample } from "../examples/basic";
 
 const components = {
   BasicExample: () => <BasicExample />,
   StackedExample: () => <StackedExample />,
-  Preview: ({ children, codeblock }) => <Preview codeblock={codeblock ? codeblock : undefined}>{children}</Preview>,
-  Image: ({ caption, alt, ...props }) => <MDXImage {...props} caption={caption} alt={alt} />,
+  ComponentContainer: ({ children, codeblock }) => <ComponentContainer codeblock={codeblock ? codeblock : undefined}>{children}</ComponentContainer>,
   h2: ({ children, id }) => <h2 id={id}>{children}</h2>,
   a: ({ children, href }) => {
     return (
@@ -30,8 +29,12 @@ const components = {
       <table className={cn("w-full overflow-hidden", className)} {...props} />
     </div>
   ),
-  th: ({ className, ...props }) => <th className={cn("border border-border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />,
-  td: ({ className, ...props }) => <td className={cn("border border-border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />,
+  th: ({ className, ...props }) => (
+    <th className={cn("border border-border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />
+  ),
+  td: ({ className, ...props }) => (
+    <td className={cn("border border-border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right", className)} {...props} />
+  ),
   ol: ({ className, ...props }) => <ol className={cn("mt-2 ml-2 list-decimal", className)} {...props} />,
   ul: ({ className, ...props }) => <ul className={cn("mt-2 ml-2 list-disc", className)} {...props} />,
   li: ({ className, ...props }) => <li className={cn("mt-2 ml-2 list-item", className)} {...props} />,
