@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "scripts": {
     "build": "tsup index.tsx",
+    "dev": "tsup index.tsx --watch --silent",
     "lint": "pnpm biome check --write ."
   },
   "exports": {

@@ -1,9 +1,10 @@
 {
   "name": "toldo",
   "scripts": {
-    "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "build": "turbo build",
+    "build:supercharged": "turbo lint && turbo build && pnpm install",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {

@@ -2,7 +2,7 @@
 
 import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import type { Primitive } from "@radix-ui/react-primitive";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import type { AnimationProps, HTMLMotionProps } from "framer-motion";
 import React from "react";
 
@@ -15,13 +15,13 @@ const STACK_Y_OFFSET = 24;
 
 const STACK_SCALE_OFFSET = 0.05;
 
-const STACK_OPACITY_OFFSET = 0.1;
+const STACK_OPACITY_OFFSET = 0.33;
 
 export { EASE_TRANSITION, STACK_Y_OFFSET, STACK_SCALE_OFFSET, STACK_OPACITY_OFFSET };
 
 interface DialogProps {
   id: string;
-  open: boolean;
+  open?: boolean;
   dialog: React.ReactNode;
 }
 
@@ -47,7 +47,7 @@ interface DialogProviderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: initialDialogs }) => {
-  const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs || []);
+  const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs?.map((dialog) => ({ ...dialog, open: dialog.open ?? false })) || []);
 
   const openDialog = (id: string) => {
     setDialogs((prevDialogs) =>
@@ -103,7 +103,21 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: init
 type DialogRootProps = RadixDialogPrimitive.DialogProps;
 
 const DialogRoot: React.FC<DialogRootProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Root {...props}>{children}</RadixDialogPrimitive.Root>;
+  const { dialogs, clearDialogs } = useDialogContext();
+  return (
+    <RadixDialogPrimitive.Root
+      open={dialogs.some((dialog) => dialog.open)}
+      onOpenChange={(open) => {
+        props.onOpenChange?.(open);
+        if (!open) {
+          clearDialogs();
+        }
+      }}
+      {...props}
+    >
+      {children}
+    </RadixDialogPrimitive.Root>
+  );
 };
 
 interface DialogTriggerProps extends RadixDialogPrimitive.DialogTriggerProps {
@@ -144,19 +158,7 @@ const DialogOverlay: React.FC<DialogOverlayProps> = ({ children, ...props }) => 
 type DialogContentProps = RadixDialogPrimitive.DialogContentProps;
 
 const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => {
-  const { clearDialogs } = useDialogContext();
-  return (
-    <RadixDialogPrimitive.Content
-      onPointerDownOutside={(event) => {
-        event.preventDefault();
-        props.onPointerDownOutside?.(event);
-        clearDialogs();
-      }}
-      {...props}
-    >
-      {children}
-    </RadixDialogPrimitive.Content>
-  );
+  return <RadixDialogPrimitive.Content {...props}>{children}</RadixDialogPrimitive.Content>;
 };
 
 type DialogCloseProps = RadixDialogPrimitive.DialogCloseProps;
@@ -186,11 +188,7 @@ const DialogDescription: React.FC<DialogDescriptionProps> = ({ children, ...prop
 type DialogSharedItemProps = HTMLMotionProps<"div">;
 
 const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props }) => {
-  return (
-    <motion.div data-toldo-dialog-shared-item {...props}>
-      {children}
-    </motion.div>
-  );
+  return <motion.div {...props}>{children}</motion.div>;
 };
 
 interface DialogStackProps extends HTMLMotionProps<"ul"> {
@@ -227,38 +225,44 @@ const DialogStack: React.FC<DialogStackProps> = ({
         justifyContent: "center",
         alignItems: "center",
       }}
-      data--toldo-dialog-stack
     >
-      {openDialogs.map((dialog, index) => {
-        const position = openDialogs.length - index - 1;
-        return (
-          <motion.li
-            data-toldo-dialog-stack-index={index}
-            key={dialog.id}
-            initial={{
-              y: 0,
-              scale: 0.85,
-              opacity: position === 0 ? 1 : 0,
-            }}
-            animate={{
-              y: position * -offsets.y,
-              zIndex: openDialogs.length - position,
-              scale: 1 - offsets.scale * position,
-              opacity: 1 - offsets.opacity * position,
-            }}
-            transition={{
-              ease: [0.19, 1, 0.22, 1],
-              duration: 0.4,
-            }}
-            style={{
-              position: "absolute",
-              listStyle: "none",
-            }}
-          >
-            {dialog.dialog}
-          </motion.li>
-        );
-      })}
+      <AnimatePresence initial={false}>
+        {openDialogs.map((dialog, index) => {
+          const position = openDialogs.length - index - 1;
+          return (
+            <motion.li
+              data-toldo-dialog-id={dialog.id}
+              key={dialog.id}
+              initial={{
+                scale: 1,
+                y: 48,
+                opacity: 0,
+              }}
+              animate={{
+                y: position * -offsets.y,
+                zIndex: openDialogs.length - position,
+                scale: 1 - offsets.scale * position,
+                opacity: 1 - offsets.opacity * position,
+              }}
+              exit={{
+                scale: 1,
+                y: 48,
+                opacity: 0,
+              }}
+              transition={{
+                ease: [0.19, 1, 0.22, 1],
+                duration: 0.4,
+              }}
+              style={{
+                position: "absolute",
+                listStyle: "none",
+              }}
+            >
+              {dialog.dialog}
+            </motion.li>
+          );
+        })}
+      </AnimatePresence>
     </motion.ul>
   );
 };
@@ -284,7 +288,7 @@ const DialogButton: React.FC<DialogButtonProps> = ({ kind = "default", dialogId,
   };
 
   return (
-    <motion.button data-toldo-dialog-button type="button" {...props} onClick={handleClick}>
+    <motion.button type="button" {...props} onClick={handleClick}>
       {children}
     </motion.button>
   );
