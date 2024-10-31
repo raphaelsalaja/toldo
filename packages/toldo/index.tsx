@@ -47,7 +47,7 @@ interface DialogProviderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: initialDialogs }) => {
-  const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs);
+  const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs || []);
 
   const openDialog = (id: string) => {
     setDialogs((prevDialogs) =>
@@ -143,13 +143,13 @@ const DialogOverlay: React.FC<DialogOverlayProps> = ({ children, ...props }) => 
 
 type DialogContentProps = RadixDialogPrimitive.DialogContentProps;
 
-const Content = React.forwardRef<HTMLDivElement, DialogContentProps>(({ children, ...props }, ref) => {
+const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => {
   const { clearDialogs } = useDialogContext();
   return (
     <RadixDialogPrimitive.Content
-      ref={ref}
-      onOpenAutoFocus={(event) => event.preventDefault()}
       onPointerDownOutside={(event) => {
+        event.preventDefault();
+        props.onPointerDownOutside?.(event);
         clearDialogs();
       }}
       {...props}
@@ -157,10 +157,7 @@ const Content = React.forwardRef<HTMLDivElement, DialogContentProps>(({ children
       {children}
     </RadixDialogPrimitive.Content>
   );
-});
-Content.displayName = "Content";
-
-const DialogContent = motion.create(Content, { forwardMotionProps: true });
+};
 
 type DialogCloseProps = RadixDialogPrimitive.DialogCloseProps;
 

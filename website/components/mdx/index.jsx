@@ -1,5 +1,3 @@
-import { StackedExample } from "@/components/examples/stacked";
-
 import Link from "@/components/link";
 import { cn } from "@/lib/cn";
 
@@ -9,11 +7,11 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 import ComponentContainer from "@/components/component-container";
-import { BasicExample } from "../examples/basic";
+import * as Examples from "@/components/examples";
 
 const components = {
-  BasicExample: () => <BasicExample />,
-  StackedExample: () => <StackedExample />,
+  BasicExample: () => <Examples.Basic />,
+  StackedExample: () => <Examples.Stacked />,
   ComponentContainer: ({ children, codeblock }) => <ComponentContainer codeblock={codeblock ? codeblock : undefined}>{children}</ComponentContainer>,
   h2: ({ children, id }) => <h2 id={id}>{children}</h2>,
   a: ({ children, href }) => {

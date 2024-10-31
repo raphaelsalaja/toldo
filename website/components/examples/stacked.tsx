@@ -4,7 +4,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { PlusIcon } from "lucide-react";
 import * as Dialog from "toldo";
 
-export const StackedExample = () => {
+export const Stacked = () => {
   const dialogs: Dialog.Props[] = [
     {
       id: "dialog-one",

@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import * as Dialog from "toldo";
 
-export const BasicExample = () => {
+export const Basic = () => {
   const [open, setOpen] = React.useState(false);
 
   const variants: { [key: string]: AnimationProps } = {
@@ -60,10 +60,10 @@ export const BasicExample = () => {
         <AnimatePresence>
           {open && (
             <Dialog.Portal forceMount>
-              <Dialog.Overlay>
+              <Dialog.Overlay className="fixed left-0 top-0 w-full h-full">
                 <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
               </Dialog.Overlay>
-              <Dialog.Content className="fixed inset-0 flex items-center justify-center">
+              <Dialog.Content className="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <motion.div {...variants.content} className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
                   <div className="flex flex-col gap-2 px-6 pt-6">
                     <Dialog.Title className="font-semibold text-foreground text-large">Dialog Title</Dialog.Title>
@@ -76,10 +76,10 @@ export const BasicExample = () => {
                     disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
                   </Dialog.Description>
                   <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
-                    <Dialog.Close className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-110">
+                    <Dialog.Close className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150">
                       Reject Knowledge
                     </Dialog.Close>
-                    <Dialog.Close className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-110">
+                    <Dialog.Close className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150">
                       Accept Knowledge
                     </Dialog.Close>
                   </div>
