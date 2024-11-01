@@ -235,7 +235,7 @@ const DialogStack: React.FC<DialogStackProps> = ({
               key={dialog.id}
               initial={{
                 scale: 1,
-                y: 48,
+                y: STACK_Y_OFFSET * 2,
                 opacity: 0,
               }}
               animate={{
@@ -246,12 +246,12 @@ const DialogStack: React.FC<DialogStackProps> = ({
               }}
               exit={{
                 scale: 1,
-                y: 48,
+                y: STACK_Y_OFFSET * 2,
                 opacity: 0,
               }}
               transition={{
                 ease: [0.19, 1, 0.22, 1],
-                duration: 0.4,
+                duration: 0.6,
               }}
               style={{
                 position: "absolute",

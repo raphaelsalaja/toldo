@@ -1,6 +1,7 @@
 "use client";
 
-import { type AnimationProps, motion } from "framer-motion";
+import { AnimatePresence, type AnimationProps, motion } from "framer-motion";
+import { useState } from "react";
 import * as Dialog from "toldo";
 
 export const Stacked = () => {
@@ -20,19 +21,15 @@ export const Stacked = () => {
             app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
           </Dialog.Description>
           <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
-            <Dialog.Button
-              kind="close"
-              dialogId="dialog-one"
-              className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150"
-            >
-              Reject Knowledge
-            </Dialog.Button>
+            <Dialog.Close className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150">
+              Close
+            </Dialog.Close>
             <Dialog.Button
               kind="open"
               dialogId="dialog-two"
               className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
-              Accept Knowledge
+              Continue
             </Dialog.Button>
           </div>
         </Dialog.Content>
@@ -58,14 +55,14 @@ export const Stacked = () => {
               dialogId="dialog-two"
               className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
-              Reject Knowledge
+              Go Back
             </Dialog.Button>
             <Dialog.Button
               kind="open"
               dialogId="dialog-three"
               className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
-              Accept Knowledge
+              Continue
             </Dialog.Button>
           </div>
         </Dialog.Content>
@@ -91,15 +88,11 @@ export const Stacked = () => {
               dialogId="dialog-three"
               className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
-              Reject Knowledge
+              Go Back
             </Dialog.Button>
-            <Dialog.Button
-              kind="open"
-              dialogId="dialog-two"
-              className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150"
-            >
-              Accept Knowledge
-            </Dialog.Button>
+            <Dialog.Close className="!text-green-11 h-[32px] max-w-fit rounded-lg bg-green-a3 px-3 transition-all ease-in-out hover:brightness-150">
+              Complete
+            </Dialog.Close>
           </div>
         </Dialog.Content>
       ),
@@ -118,27 +111,51 @@ export const Stacked = () => {
         opacity: 0,
       },
       transition: {
-        duration: 0.1,
         ease: [0.19, 1, 0.22, 1],
+        duration: 0.4,
+      },
+    },
+    stack: {
+      initial: {
+        y: 24,
+        opacity: 0,
+      },
+      animate: {
+        y: 0,
+        opacity: 1,
+      },
+      exit: {
+        y: 24,
+        opacity: 0,
+      },
+      transition: {
+        ease: [0.19, 1, 0.22, 1],
+        duration: 0.4,
       },
     },
   };
 
+  const [open, setOpen] = useState(false);
+
   return (
     <Dialog.Provider dialogs={dialogs}>
-      <Dialog.Root>
+      <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Trigger
           dialogId="dialog-one"
           className="h-[32px] rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3 transition-all ease-in-out hover:brightness-95"
         >
           Open Dialog
         </Dialog.Trigger>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed left-0 top-0 w-full h-full">
-            <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
-          </Dialog.Overlay>
-          <Dialog.Stack />
-        </Dialog.Portal>
+        <AnimatePresence>
+          {open && (
+            <Dialog.Portal forceMount>
+              <Dialog.Overlay className="fixed left-0 top-0 w-full h-full">
+                <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
+              </Dialog.Overlay>
+              <Dialog.Stack {...variants.stack} />
+            </Dialog.Portal>
+          )}
+        </AnimatePresence>
       </Dialog.Root>
     </Dialog.Provider>
   );

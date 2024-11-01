@@ -1,4 +1,4 @@
-import "./main.css";
+import "@/styles.css";
 
 import type { Metadata } from "next";
 
