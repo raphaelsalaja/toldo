@@ -4,15 +4,6 @@ import nextMDX from "@next/mdx";
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/introduction",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 const withMDX = nextMDX({
