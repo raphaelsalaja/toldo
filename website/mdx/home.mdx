@@ -48,13 +48,13 @@ export default () => (
 
 # Basic
 
-This is the most basic example of a dialog.
+This example demonstrates the simplest use of Toldo's dialog component. This setup uses straightforward styles and functional controls to provide a basic dialog interaction.
 
 <ComponentContainer>
   <BasicExample />
 </ComponentContainer>
 
-```tsx title="basic.tsx"
+```tsx title="basic.tsx" showLineNumbers
 import * as Dialog from "toldo";
 
 export const Basic = () => {
@@ -92,13 +92,15 @@ export const Basic = () => {
 
 # Basic with Animation
 
-This is the most basic example of a dialog with animations.
+In this example, we add animations to the basic dialog for a more engaging experience. Using Framer Motion, we apply smooth fade-in and scaling effects when the dialog opens and closes.
+
+In order for the animation presence to work, you need to make sure to mount the portal components when the dialog is open. This is done by setting the <Code>forceMount</Code> prop to <Code>true</Code> on the <Code>Dialog.Portal</Code> component.
 
 <ComponentContainer>
   <BasicWithAnimationExample />
 </ComponentContainer>
 
-```tsx title="basic-with-animation.tsx"
+```tsx title="basic-with-animation.tsx" {8,30} showLineNumbers
 "use client";
 
 import { AnimatePresence, type AnimationProps, motion } from "framer-motion";

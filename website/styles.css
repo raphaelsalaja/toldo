@@ -303,5 +303,22 @@
         margin-top: 0 !important;
       }
     }
+
+    [data-highlighted-line] {
+      position: relative;
+      z-index: 0;
+
+      ::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -16px;
+        right: 0;
+        bottom: 0;
+        background-color: var(--highlight-background);
+        box-shadow: inset 1px 0 0 var(--highlight-foreground);
+        z-index: -1;
+      }
+    }
   }
 }
