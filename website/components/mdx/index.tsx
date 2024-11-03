@@ -23,11 +23,14 @@ type FigCaptionProps = React.ComponentProps<typeof FigCaption>;
 const components = {
   PropsTable: (data: PropsTableProps) => <PropsTable {...data} />,
   ShowcaseExample: () => <Examples.Showcase />,
+  SharedExample: () => <Examples.Shared />,
+  BasicExample: () => <Examples.Basic />,
+  StackedExample: () => <Examples.Stacked />,
   ComponentContainer: (props: ComponentContainerProps) => <ComponentContainer {...props} />,
   figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
   h1: (props: Heading1Props) => <H1 {...props} />,
   a: (props: AnchorProps) => <Link {...props} className="inline-flex items-center gap-1 text-muted" underline />,
-  Code: (props: CodeProps) => <span {...props} className="bg-gray-3 text-gray-11 rounded-md px-1 text-sm font-mono  inline-block" />,
+  Code: (props: CodeProps) => <span {...props} className="inline-block rounded-md bg-gray-3 px-1 font-mono text-gray-11 text-sm" />,
 };
 
 export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {

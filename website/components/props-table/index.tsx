@@ -16,43 +16,43 @@ interface PropsTableProps {
 export const PropsTable = ({ data }: PropsTableProps) => {
   if (data.length === 0) {
     return (
-      <div className="border-gray-4 border bg-gray-2 rounded-lg w-full mt-6 overflow-hidden h-[42px]">
-        <div className="text-center py-3 text-gray-11 font-default text-small">No Additional Props</div>
+      <div className="mt-6 h-[42px] w-full overflow-hidden rounded-lg border border-gray-4 bg-gray-2">
+        <div className="py-3 text-center font-default text-gray-11 text-small">No Additional Props</div>
       </div>
     );
   }
 
   return (
-    <div className="border-gray-4 border rounded-lg w-full h-full mt-6 overflow-hidden">
-      <table className="w-full h-full table-fixed">
-        <thead className="bg-gray-2 text-left border-b border-gray-4 font-default text-default">
+    <div className="mt-6 h-full w-full overflow-hidden rounded-lg border border-gray-4">
+      <table className="h-full w-full md:table-fixed">
+        <thead className="border-gray-4 border-b bg-gray-2 text-left font-default text-default">
           <tr>
-            <th className="font-normal py-3 px-4 text-default w-1/3">Prop</th>
-            <th className="font-normal py-3 px-4 text-default w-1/3">Type</th>
-            <th className="font-normal py-3 px-4 text-default w-1/3">Default</th>
+            <th className="px-4 py-3 font-normal text-small">Prop</th>
+            <th className="px-4 py-3 font-normal text-small">Type</th>
+            <th className="px-4 py-3 font-normal text-small">Default</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.name} className={clsx("text-left font-default text-default w-full", item !== data[data.length - 1] && "border-b border-gray-4")}>
-              <td className="font-normal py-3 px-4 text-small">
-                <div className="flex gap-1 items-center">
-                  <div className="bg-pink-3 text-pink-11 w-fit px-1 rounded-md font-mono">{item.name}</div>
+            <tr key={item.name} className={clsx("w-full text-left font-default text-default", item !== data[data.length - 1] && "border-gray-4 border-b")}>
+              <td className="px-4 py-3 font-normal text-small">
+                <div className="flex items-center gap-1">
+                  <div className="w-fit rounded-md bg-pink-3 px-1 font-mono text-pink-11">{item.name}</div>
                   {item.nameDetails && <PropInformation content={item.nameDetails} />}
                 </div>
               </td>
-              <td className="font-normal py-3 px-4 text-small">
+              <td className="px-4 py-3 font-normal text-small">
                 {item.type ? (
-                  <div className=" flex gap-1 items-center w-fit">
-                    <div className="bg-gray-3 text-gray-11 w-fit px-1 rounded-md font-mono">{item.type}</div>
+                  <div className=" flex w-fit items-center gap-1">
+                    <div className="w-fit rounded-md bg-gray-3 px-1 font-mono text-gray-11">{item.type}</div>
                     {item.typeDetails && <PropInformation content={item.typeDetails} />}
                   </div>
                 ) : (
                   <div>-</div>
                 )}
               </td>
-              <td className="font-normal py-3 px-4 text-small">
-                {item.default ? <div className="bg-gray-3 text-gray-11 w-fit px-1 rounded-md font-mono">{item.default}</div> : <div>-</div>}
+              <td className="px-4 py-3 font-normal text-small">
+                {item.default ? <div className="w-fit rounded-md bg-gray-3 px-1 font-mono text-gray-11">{item.default}</div> : <div>-</div>}
               </td>
             </tr>
           ))}

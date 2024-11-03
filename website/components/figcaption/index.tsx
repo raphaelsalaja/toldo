@@ -71,9 +71,9 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
   return (
     <figcaption
       ref={figCaptionRef}
-      className="bg-gray-2 pl-4 py-2 pr-2 text-muted border-b border-gray-4 font-normal text-small -mb-6 flex gap-2 items-center justify-between"
+      className="-mb-6 flex items-center justify-between gap-2 border-gray-4 border-b bg-gray-2 py-2 pr-2 pl-4 font-normal text-muted text-small"
     >
-      <div className="flex gap-1.5 items-center">
+      <div className="flex items-center gap-1.5">
         <Icon /> {props.children}
       </div>
       <button
@@ -81,9 +81,9 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
         disabled={isCopied}
         onClick={handleClickCopy}
         className={clsx(
-          "relative before:absolute before:top-0 before:left-0 before:-z-[1] before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
+          "before:-z-[1] relative before:absolute before:top-0 before:left-0 before:h-full before:w-full before:scale-75 before:rounded-md before:bg-transparent before:transition-all before:content-['']",
           "hover:before:scale-100 hover:before:bg-gray-3",
-          "w-[24px] h-[24px] flex items-center justify-center rounded-md z-[0] bg-transparent transition-all",
+          "z-[0] flex h-[24px] w-[24px] items-center justify-center rounded-md bg-transparent transition-all",
           isCopied && "hover:before:scale-75 hover:before:bg-transparent",
         )}
       >

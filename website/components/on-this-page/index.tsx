@@ -101,7 +101,7 @@ export const OnThisPage = () => {
           duration: 0.25,
         }}
         className={cn(
-          "top-[10rem] -right-[128px] hidden",
+          "-right-[128px] top-[10rem] hidden",
           "xl:top-[6rem] xl:right-[64px] xl:block",
           "fixed mt-0 h-full w-48 justify-start space-y-4 transition",
         )}

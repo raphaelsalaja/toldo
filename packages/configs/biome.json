@@ -5,6 +5,10 @@
     "clientKind": "git",
     "useIgnoreFile": true
   },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": ["node_modules", "dist", ".next", ".vercel", ".pnpm"]
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
@@ -17,6 +21,15 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "nursery":{
+        "useSortedClasses": {
+          "level": "error",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["clsx", "cva", "tw"]
+          }
+        }
+      },
       "recommended": true
     }
   },

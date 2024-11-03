@@ -33,20 +33,20 @@ export const H1 = (props: H1Props) => {
   const initial = { opacity: 0 };
 
   const animate = { opacity: hovering ? 1 : 0 };
-  
+
   const exit = { opacity: 0 };
-  
+
   const transition = { duration: 0.1 };
 
   return (
     <motion.h1
       {...props}
-      className="flex gap-1 items-center hover:cursor-pointer relative"
+      className="relative flex items-center gap-1 hover:cursor-pointer"
       onClick={onClick}
       onHoverStart={onHoverStart}
       onHoverEnd={onHoverEnd}
     >
-      <motion.div initial={initial} animate={animate} exit={exit} transition={transition} className="absolute -left-6 top-1/2 transform -translate-y-1/2">
+      <motion.div initial={initial} animate={animate} exit={exit} transition={transition} className="-left-6 -translate-y-1/2 absolute top-1/2 transform">
         <Hash size={14} color="var(--gray-10)" />
       </motion.div>
 

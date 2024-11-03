@@ -15,9 +15,9 @@ export const PropInformation = ({ content }: { content: React.ReactNode }) => {
       <Popover.Trigger asChild>
         <div
           className={clsx(
-            "relative before:absolute before:top-0 before:left-0 before:-z-[1] before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
-            "hover:before:scale-100 hover:before:bg-gray-3 hover:text-foreground",
-            "w-[24px] h-[24px] flex items-center justify-center rounded-md z-[0] bg-transparent transition-all text-muted",
+            "before:-z-[1] relative before:absolute before:top-0 before:left-0 before:h-full before:w-full before:scale-75 before:rounded-md before:bg-transparent before:transition-all before:content-['']",
+            "hover:text-foreground hover:before:scale-100 hover:before:bg-gray-3",
+            "z-[0] flex h-[24px] w-[24px] items-center justify-center rounded-md bg-transparent text-muted transition-all",
           )}
         >
           <InfoCircledIcon />
@@ -35,7 +35,7 @@ export const PropInformation = ({ content }: { content: React.ReactNode }) => {
                   ease: [0.19, 1, 0.22, 1],
                   duration: 0.2,
                 }}
-                className="bg-gray-2 text-gray-11 max-w-96 border border-gray-4 py-2 px-3 rounded-lg shadow text-small leading-[18px]  gap-2 items-center inline-block"
+                className="inline-block max-w-96 items-center gap-2 rounded-lg border border-gray-4 bg-gray-2 px-3 py-2 text-gray-11 text-small leading-[18px] shadow"
               >
                 {content}
               </motion.div>

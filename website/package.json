@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "pnpm biome check --write ."
+    "lint": "pnpm biome check --fix --unsafe ."
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

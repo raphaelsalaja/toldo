@@ -17,9 +17,9 @@ export default async function Page() {
   }
 
   const className = clsx(
-    "hover:before:scale-100 hover:before:bg-gray-4 hover:text-gray-12 hover:opacity-100",
-    "before:absolute before:top-0 before:left-0 before:-z-[1] before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
-    "relative w-fit h-fit px-1.5 flex items-center justify-center rounded-md z-[1] bg-transparent transition-all text-muted gap-2",
+    "hover:text-gray-12 hover:opacity-100 hover:before:scale-100 hover:before:bg-gray-4",
+    "before:-z-[1] before:absolute before:top-0 before:left-0 before:h-full before:w-full before:scale-75 before:rounded-md before:bg-transparent before:transition-all before:content-['']",
+    "relative z-[1] flex h-fit w-fit items-center justify-center gap-2 rounded-md bg-transparent px-1.5 text-muted transition-all",
   );
 
   return (

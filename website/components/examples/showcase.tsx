@@ -9,7 +9,7 @@ export const Showcase = () => {
     {
       id: "dialog-one",
       dialog: (
-        <Dialog.StackContent className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
+        <Dialog.StackContent className="flex w-[80vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[512px]">
           <div className="flex flex-col gap-2 px-6 pt-6">
             <Dialog.StackTitle className="font-semibold text-foreground text-large">Dialog 1</Dialog.StackTitle>
             <h3 className="text-default text-muted">
@@ -37,7 +37,7 @@ export const Showcase = () => {
     {
       id: "dialog-two",
       dialog: (
-        <Dialog.StackContent className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
+        <Dialog.StackContent className="flex w-[80vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[512px]">
           <div className="flex flex-col gap-2 px-6 pt-6">
             <Dialog.StackTitle className="font-semibold text-foreground text-large">Dialog 2</Dialog.StackTitle>
             <h3 className="text-default text-muted">
@@ -68,7 +68,7 @@ export const Showcase = () => {
     {
       id: "dialog-three",
       dialog: (
-        <Dialog.StackContent className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
+        <Dialog.StackContent className="flex w-[80vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[512px]">
           <div className="flex flex-col gap-2 px-6 pt-6">
             <Dialog.StackTitle className="font-semibold text-foreground text-large">Dialog 3</Dialog.StackTitle>
             <h3 className="text-default text-muted">
@@ -145,7 +145,7 @@ export const Showcase = () => {
       <Dialog.Portal forceMount>
         <AnimatePresence>
           {open && (
-            <Dialog.Overlay className="fixed left-0 top-0 w-full h-full">
+            <Dialog.Overlay className="fixed top-0 left-0 h-full w-full">
               <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
             </Dialog.Overlay>
           )}
