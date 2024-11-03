@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     url: "https://toldo.vercel.app/",
     title: "Toldo",
     description: "A modal component for React",
-    images: ["https://toldo.vercel.app/introduction/og.png"],
+    images: ["https://toldo.vercel.app/og.png"],
     siteName: "Toldo",
   },
   twitter: {
     card: "summary_large_image",
     title: "Toldo",
     description: "A modal component for React",
-    images: ["https://toldo.vercel.app/introduction/og.png"],
+    images: ["https://toldo.vercel.app/og.png"],
   },
   robots: {
     index: true,
