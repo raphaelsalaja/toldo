@@ -67,7 +67,6 @@
     --moz-osx-font-smoothing: grayscale;
 
     font-variant-ligatures: common-ligatures;
-    text-wrap: pretty;
     text-rendering: optimizelegibility;
   }
 
@@ -285,27 +284,25 @@
     }
   }
 
-  source {
-    @apply text-gray-11 text-small leading-[18px];
-  }
-
   * {
-    pre {
-      padding: 16px;
-      overflow-x: auto;
-      font-size: 12px;
-
-      [data-line] {
-        margin-top: 0 !important;
-      }
-    }
-
     figure {
       width: 100%;
       margin-top: 4px;
       border: 1px solid var(--border);
       border-radius: var(--radius-base);
       overflow: hidden;
+    }
+
+    pre {
+      padding: 16px;
+      font-size: 12px;
+      overflow-x: auto;
+
+      max-height: 384px;
+
+      [data-line] {
+        margin-top: 0 !important;
+      }
     }
   }
 }
