@@ -7,7 +7,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { AnimationProps, HTMLMotionProps } from "framer-motion";
 import React, { isValidElement, useId } from "react";
 
-
 const EASE_TRANSITION: AnimationProps["transition"] = {
   ease: [0.19, 1, 0.22, 1],
   duration: 0.4,
@@ -182,7 +181,6 @@ const DialogTitle: React.FC<DialogTitleProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Title {...props}>{children}</RadixDialogPrimitive.Title>;
 };
 
-
 type DialogDescriptionProps = RadixDialogPrimitive.DialogDescriptionProps;
 
 const DialogDescription: React.FC<DialogDescriptionProps> = ({ children, ...props }) => {
@@ -293,21 +291,17 @@ type DialogStackTitleProps = React.ComponentPropsWithoutRef<typeof Primitive.h2>
 const DialogStackTitle: React.FC<DialogStackTitleProps> = ({ children, ...props }) => {
   const { id } = useDialogContext();
   return (
-
     <h2 id={id.title} {...props}>
       {children}
     </h2>
   );
 };
 
-
 type DialogStackDescriptionProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> & React.HTMLAttributes<HTMLHeadingElement>;
 const DialogStackDescription: React.FC<DialogStackDescriptionProps> = ({ children, ...props }) => {
   const { id } = useDialogContext();
   return (
-    <p id={id.description} 
-
-    {...props}>
+    <p id={id.description} {...props}>
       {children}
     </p>
   );
