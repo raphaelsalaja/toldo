@@ -297,7 +297,6 @@
       padding: 16px;
       font-size: 12px;
       overflow-x: auto;
-
       max-height: 384px;
 
       [data-line] {

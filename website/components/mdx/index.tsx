@@ -25,6 +25,7 @@ const components = {
   ShowcaseExample: () => <Examples.Showcase />,
   SharedExample: () => <Examples.Shared />,
   BasicExample: () => <Examples.Basic />,
+  BasicWithAnimationExample: () => <Examples.BasicWithAnimation />,
   StackedExample: () => <Examples.Stacked />,
   ComponentContainer: (props: ComponentContainerProps) => <ComponentContainer {...props} />,
   Code: (props: CodeProps) => <span {...props} className="inline-block rounded-md bg-gray-3 px-1 font-mono text-gray-11 text-sm" />,
