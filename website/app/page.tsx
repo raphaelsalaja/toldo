@@ -1,7 +1,6 @@
 import { getDocumentation } from "@/lib/mdx";
 
 import { MDX } from "@/components/mdx";
-import { OnThisPage } from "@/components/on-this-page";
 import toldo from "^/packages/toldo/package.json";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -25,7 +24,6 @@ export default async function Page() {
 
   return (
     <React.Fragment>
-      <OnThisPage />
       <div className="flex flex-col">
         <div className="flex justify-between gap-2">
           <div className="flex flex-col gap-0">

@@ -155,18 +155,7 @@ const DialogOverlay: React.FC<DialogOverlayProps> = ({ children, ...props }) => 
 type DialogContentProps = RadixDialogPrimitive.DialogContentProps;
 
 const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => {
-  const { clearDialogs } = useDialogContext();
-  return (
-    <RadixDialogPrimitive.Content
-      onPointerDownOutside={(event) => {
-        props.onPointerDownOutside?.(event);
-        clearDialogs();
-      }}
-      {...props}
-    >
-      {children}
-    </RadixDialogPrimitive.Content>
-  );
+  return <RadixDialogPrimitive.Content {...props}>{children}</RadixDialogPrimitive.Content>;
 };
 
 type DialogCloseProps = RadixDialogPrimitive.DialogCloseProps;
@@ -203,7 +192,10 @@ interface DialogStackProps extends RadixDialogPrimitive.DialogContentProps {
     scale: number;
     opacity: number;
   };
-  transition?: AnimationProps["transition"];
+  initial?: HTMLMotionProps<"div">["initial"];
+  animate?: HTMLMotionProps<"div">["animate"];
+  exit?: HTMLMotionProps<"div">["exit"];
+  transition?: HTMLMotionProps<"div">["transition"];
 }
 
 const DialogStack: React.FC<DialogStackProps> = ({
@@ -212,39 +204,51 @@ const DialogStack: React.FC<DialogStackProps> = ({
     scale: STACK_SCALE_OFFSET,
     opacity: STACK_OPACITY_OFFSET,
   },
-  transition = EASE_TRANSITION,
   ...props
 }) => {
-  const { id, dialogs } = useDialogContext();
+  const { dialogs, clearDialogs } = useDialogContext();
   const openDialogs = dialogs.filter((dialog) => dialog.open);
 
   return (
-    <DialogContent {...props}>
-      <VisuallyHidden.Root>
-        <DialogTitle>Title</DialogTitle>
-      </VisuallyHidden.Root>
-      <motion.ul
+    <motion.div
+      key="dialog-stack"
+      style={{
+        display: "flex",
+        position: "fixed",
+        top: "0",
+        right: "0",
+        bottom: "0",
+        left: "0",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+      initial={props.initial}
+      animate={props.animate}
+      exit={props.exit}
+      transition={props.transition}
+    >
+      <DialogContent
         style={{
-          display: "flex",
-          position: "fixed",
-          top: "0",
-          right: "0",
-          bottom: "0",
-          left: "0",
-          justifyContent: "center",
-          alignItems: "center",
+          display: "contents",
         }}
+        onPointerDownOutside={() => {
+          clearDialogs();
+        }}
+        {...props}
       >
+        <VisuallyHidden.Root>
+          <DialogTitle>Title</DialogTitle>
+        </VisuallyHidden.Root>
         <AnimatePresence initial={false}>
           {openDialogs.map((dialog, index) => {
             const position = openDialogs.length - index - 1;
             return (
-              <motion.li
+              <motion.div
                 key={dialog.id}
                 id={dialog.id}
                 initial={{
                   scale: 1,
-                  y: STACK_Y_OFFSET * 2,
+                  y: STACK_Y_OFFSET,
                   opacity: 0,
                 }}
                 animate={{
@@ -268,12 +272,12 @@ const DialogStack: React.FC<DialogStackProps> = ({
                 }}
               >
                 {dialog.dialog}
-              </motion.li>
+              </motion.div>
             );
           })}
         </AnimatePresence>
-      </motion.ul>
-    </DialogContent>
+      </DialogContent>
+    </motion.div>
   );
 };
 

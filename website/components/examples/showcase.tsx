@@ -146,16 +146,26 @@ export const Showcase = () => {
         >
           Open Dialog
         </Dialog.Trigger>
-        <AnimatePresence>
-          {open && (
-            <Dialog.Portal>
+
+            <Dialog.Portal forceMount>
+            <AnimatePresence>
+            {open && (
               <Dialog.Overlay className="fixed left-0 top-0 w-full h-full">
+              
                 <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
+              
+              
               </Dialog.Overlay>
+            )}
+            </AnimatePresence>
+              <AnimatePresence>
+              {open && (
               <Dialog.Stack {...variants.stack} />
+            )}
+            </AnimatePresence>
             </Dialog.Portal>
-          )}
-        </AnimatePresence>
+
+
       </Dialog.Root>
     </Dialog.Provider>
   );
