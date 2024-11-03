@@ -31,8 +31,11 @@ export const H1 = (props: H1Props) => {
   };
 
   const initial = { opacity: 0 };
+
   const animate = { opacity: hovering ? 1 : 0 };
+  
   const exit = { opacity: 0 };
+  
   const transition = { duration: 0.1 };
 
   return (

@@ -16,7 +16,7 @@ interface PropsTableProps {
 export const PropsTable = ({ data }: PropsTableProps) => {
   if (data.length === 0) {
     return (
-      <div className="border-gray-4 border  bg-gray-3 rounded-lg w-full  mt-6 overflow-hidden h-[42px]">
+      <div className="border-gray-4 border bg-gray-2 rounded-lg w-full mt-6 overflow-hidden h-[42px]">
         <div className="text-center py-3 text-gray-11 font-default text-small">No Additional Props</div>
       </div>
     );

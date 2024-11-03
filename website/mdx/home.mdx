@@ -1,17 +1,17 @@
 <ComponentContainer>
-  <ShowcaseExample/>
+  <ShowcaseExample />
 </ComponentContainer>
 
 # Introduction
 
-Toldo is an elevated component built on top of <Code>@radix-ui</Code> that provides a few extra features to make it easier to work with dialogs in your application.
+Toldo is an elevated dialog component built on top of [@radix-ui](https://www.radix-ui.com/primitives/docs/components/dialog) that provides a few extra features to make it easier to work with dialogs in your application.
 
 # Installation
 
 Install the component from your command line.
 
 ```bash title="terminal"
-pnpm install toldo/dialog
+pnpm install toldo
 ```
 
 # Anatomy
@@ -35,7 +35,8 @@ export default () => (
         <Dialog.StackContent>
           <Dialog.StackTitle />
           <Dialog.StackDescription />
-          <Dialog.Button />
+          <Dialog.StackAdd />
+		  <Dialog.StackRemove />
         </Dialog.StackContent>
       </Dialog.Stack>
     </Dialog.Portal>
@@ -47,59 +48,59 @@ export default () => (
 
 # Root
 
-Contains all the parts of a dialog. 
+Contains all the parts of a dialog.
 
 <PropsTable
-	data={[
-		{
-			name: "defaultOpen",
-			nameDetails: (
-				<span>
-					The open state of the dialog when it is initially rendered. Use when
-					you do not need to control its open state.
-				</span>
-			),
-      type: "boolean",
-		},
-		{
-			name: "open",
-			nameDetails: (
-				<span>
-					The controlled open state of the dialog. Must be used in conjunction
-					with <Code>onOpenChange</Code>.
-				</span>
-			),
-      type: "boolean",
-		},
-		{
-			name: "onOpenChange",
+  data={[
+    {
+      name: "defaultOpen",
       nameDetails: (
-				<span>
-					Event handler called when the open state of the dialog changes.
-				</span>
-			),
-			type: "function",
+        <span>
+          The open state of the dialog when it is initially rendered. Use when
+          you do not need to control its open state.
+        </span>
+      ),
+      type: "boolean",
+    },
+    {
+      name: "open",
+      nameDetails: (
+        <span>
+          The controlled open state of the dialog. Must be used in conjunction
+          with <Code>onOpenChange</Code>.
+        </span>
+      ),
+      type: "boolean",
+    },
+    {
+      name: "onOpenChange",
+      nameDetails: (
+        <span>
+          Event handler called when the open state of the dialog changes.
+        </span>
+      ),
+      type: "function",
       typeDetails: "(open: boolean) => void",
-		},
-		{
-			name: "modal",
-			nameDetails: (
-				<span>
-					The modality of the dialog. When set to <Code>true</Code>, interaction
-					with outside elements will be disabled and only dialog content will be
-					visible to screen readers.
-				</span>
-			),
+    },
+    {
+      name: "modal",
+      nameDetails: (
+        <span>
+          The modality of the dialog. When set to <Code>true</Code>, interaction
+          with outside elements will be disabled and only dialog content will be
+          visible to screen readers.
+        </span>
+      ),
       type: "boolean",
       default: "true",
-		},
-      {
+    },
+    {
       name: "dialogs",
       nameDetails: "The dialogs to render.",
       type: "array",
       typeDetails: "Array<{id: string, dialog: React.ReactNode}>",
     },
-	]}
+  ]}
 />
 
 # Trigger
@@ -107,19 +108,19 @@ Contains all the parts of a dialog.
 The button that opens the dialog.
 
 <PropsTable
-	data={[
-		{
-			name: "asChild",
-			nameDetails: (
-				<>
-					Change the default rendered element for the one passed as a child,
-					merging their props and behavior.
-				</>
-			),
-			type: "boolean",
-			default: "false",
-		},
-	]}
+  data={[
+    {
+      name: "asChild",
+      nameDetails: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+        </>
+      ),
+      type: "boolean",
+      default: "false",
+    },
+  ]}
 />
 
 # Portal
@@ -127,26 +128,26 @@ The button that opens the dialog.
 When used, portals your overlay and content parts into the <Code>body</Code> element.
 
 <PropsTable
-	data={[
-		{
-			name: "forceMount",
-			nameDetails: (
-				<span>
-					Used to force mounting when more control is needed. Useful when
-					controlling animation with React animation libraries. If used on this
-					part, it will be inherited by <Code>Dialog.Overlay</Code> and
-					<Code>Dialog.Content</Code>.
-				</span>
-			),
-			type: "boolean",
-		},
-		{
-			name: "container",
-			nameDetails: "Specify a container element to portal the content into.",
-			type: "HTMLElement",
-			default: "document.body",
-		},
-	]}
+  data={[
+    {
+      name: "forceMount",
+      nameDetails: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. If used on this
+          part, it will be inherited by <Code>Dialog.Overlay</Code> and
+          <Code>Dialog.Content</Code>.
+        </span>
+      ),
+      type: "boolean",
+    },
+    {
+      name: "container",
+      nameDetails: "Specify a container element to portal the content into.",
+      type: "HTMLElement",
+      default: "document.body",
+    },
+  ]}
 />
 
 # Overlay
@@ -154,30 +155,30 @@ When used, portals your overlay and content parts into the <Code>body</Code> ele
 A layer that covers the inert portion of the view when the dialog is open.
 
 <PropsTable
-	data={[
-		{
-			name: "asChild",
-			nameDetails: (
-				<>
-					Change the default rendered element for the one passed as a child,
-					merging their props and behavior.
-				</>
-			),
-			type: "boolean",
-			default: "false",
-		},
-		{
-			name: "forceMount",
-			nameDetails: (
-				<span>
-					Used to force mounting when more control is needed. Useful when
-					controlling animation with React animation libraries. It inherits from
-					<Code>Dialog.Portal</Code>.
-				</span>
-			),
-			type: "boolean",
-		},
-	]}
+  data={[
+    {
+      name: "asChild",
+      nameDetails: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+        </>
+      ),
+      type: "boolean",
+      default: "false",
+    },
+    {
+      name: "forceMount",
+      nameDetails: (
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. It inherits from
+          <Code>Dialog.Portal</Code>.
+        </span>
+      ),
+      type: "boolean",
+    },
+  ]}
 />
 
 # Content
@@ -185,88 +186,89 @@ A layer that covers the inert portion of the view when the dialog is open.
 Contains content to be rendered in the open dialog.
 
 <PropsTable
-	data={[
-		{
-			name: "asChild",
-			nameDetails: (
-				<>
-					Change the default rendered element for the one passed as a child,
-					merging their props and behavior.
-				</>
-			),
+  data={[
+    {
+      name: "asChild",
+      nameDetails: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+        </>
+      ),
       type: "boolean",
-			default: "false",
-		},
-		{
-			name: "forceMount",
-			type: "boolean",
-			nameDetails: (
-				<span>
-					Used to force mounting when more control is needed. Useful when
-					controlling animation with React animation libraries. It inherits from
-					<Code>Dialog.Portal</Code>.
-				</span>
-			),
-		},
-		{
-			name: "onOpenAutoFocus",
+      default: "false",
+    },
+    {
+      name: "forceMount",
+      type: "boolean",
       nameDetails: (
-				<span>
-					Event handler called when focus moves into the component after
-					opening. It can be prevented by calling
-					<Code>event.preventDefault</Code>.
-				</span>
-			),
-			type: "function",
-			typeDetails: "(event: Event) => void",
-		},
-		{
-			name: "onCloseAutoFocus",
+        <span>
+          Used to force mounting when more control is needed. Useful when
+          controlling animation with React animation libraries. It inherits from
+          <Code>Dialog.Portal</Code>.
+        </span>
+      ),
+    },
+    {
+      name: "onOpenAutoFocus",
       nameDetails: (
-				<span>
-					Event handler called when focus moves to the trigger after closing. It
-					can be prevented by calling <Code>event.preventDefault</Code>.
-				</span>
-			),
-			type: "function",
-			typeDetails: "(event: Event) => void",
-		},
-		{
-			name: "onEscapeKeyDown",
+        <span>
+          Event handler called when focus moves into the component after
+          opening. It can be prevented by calling
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+      type: "function",
+      typeDetails: "(event: Event) => void",
+    },
+    {
+      name: "onCloseAutoFocus",
       nameDetails: (
-				<span>
-					Event handler called when the escape key is down. It can be prevented
-					by calling <Code>event.preventDefault</Code>.
-				</span>
-			),
-			type: "function",
-			typeDetails: "(event: KeyboardEvent) => void",
-		},
-		{
-			name: "onPointerDownOutside",
+        <span>
+          Event handler called when focus moves to the trigger after closing. It
+          can be prevented by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+      type: "function",
+      typeDetails: "(event: Event) => void",
+    },
+    {
+      name: "onEscapeKeyDown",
       nameDetails: (
-				<span>
-					Event handler called when a pointer event occurs outside the bounds of
-					the component. It can be prevented by calling
-					<Code>event.preventDefault</Code>.
-				</span>
-			),
-			type: "function",
-			typeDetails: "(event: PointerDownOutsideEvent) => void",
-		},
-		{
-			name: "onInteractOutside",
+        <span>
+          Event handler called when the escape key is down. It can be prevented
+          by calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+      type: "function",
+      typeDetails: "(event: KeyboardEvent) => void",
+    },
+    {
+      name: "onPointerDownOutside",
       nameDetails: (
-				<span>
-					Event handler called when an interaction (pointer or focus event)
-					happens outside the bounds of the component. It can be prevented by
-					calling <Code>event.preventDefault</Code>.
-				</span>
-			),
-			type: "function",
-			typeDetails: "(event: React.FocusEvent | MouseEvent | TouchEvent) => void",
-		},
-	]}
+        <span>
+          Event handler called when a pointer event occurs outside the bounds of
+          the component. It can be prevented by calling
+          <Code>event.preventDefault</Code>.
+        </span>
+      ),
+      type: "function",
+      typeDetails: "(event: PointerDownOutsideEvent) => void",
+    },
+    {
+      name: "onInteractOutside",
+      nameDetails: (
+        <span>
+          Event handler called when an interaction (pointer or focus event)
+          happens outside the bounds of the component. It can be prevented by
+          calling <Code>event.preventDefault</Code>.
+        </span>
+      ),
+      type: "function",
+      typeDetails:
+        "(event: React.FocusEvent | MouseEvent | TouchEvent) => void",
+    },
+  ]}
 />
 
 # Close
@@ -274,19 +276,19 @@ Contains content to be rendered in the open dialog.
 The button that closes the dialog.
 
 <PropsTable
-	data={[
-		{
-			name: "asChild",
+  data={[
+    {
+      name: "asChild",
       nameDetails: (
-				<>
-					Change the default rendered element for the one passed as a child,
-					merging their props and behavior.
-				</>
-			),
-			type: "boolean",
-			default: "false",
-		},
-	]}
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+        </>
+      ),
+      type: "boolean",
+      default: "false",
+    },
+  ]}
 />
 
 # Title
@@ -294,19 +296,19 @@ The button that closes the dialog.
 An accessible title to be announced when the dialog is opened.
 
 <PropsTable
-	data={[
-		{
-			name: "asChild",
-			nameDetails: (
-				<>
-					Change the default rendered element for the one passed as a child,
-					merging their props and behavior.
-				</>
-			),
+  data={[
+    {
+      name: "asChild",
+      nameDetails: (
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+        </>
+      ),
       type: "boolean",
-			default: "false",
-		},
-	]}
+      default: "false",
+    },
+  ]}
 />
 
 # Description
@@ -314,19 +316,19 @@ An accessible title to be announced when the dialog is opened.
 An optional accessible description to be announced when the dialog is opened.
 
 <PropsTable
-	data={[
-		{
-			name: "asChild",
+  data={[
+    {
+      name: "asChild",
       nameDetails: (
-				<>
-					Change the default rendered element for the one passed as a child,
-					merging their props and behavior.
-				</>
-			),
-			type: "boolean",
-			default: "false",
-		},
-	]}
+        <>
+          Change the default rendered element for the one passed as a child,
+          merging their props and behavior.
+        </>
+      ),
+      type: "boolean",
+      default: "false",
+    },
+  ]}
 />
 
 # Stack
@@ -334,12 +336,13 @@ An optional accessible description to be announced when the dialog is opened.
 A wrapper that holds the dialogs in a stack.
 
 <PropsTable
-	data={[
-		 {
+  data={[
+    {
       name: "offsetY",
       nameDetails: (
         <span>
-          The value added to the y-axis of the dialog content, when further down the stack.
+          The value added to the y-axis of the dialog content, when further down
+          the stack.
         </span>
       ),
       type: "number",
@@ -349,7 +352,8 @@ A wrapper that holds the dialogs in a stack.
       name: "offsetScale",
       nameDetails: (
         <span>
-          The value added to the scale of the dialog content, when further down the stack.
+          The value added to the scale of the dialog content, when further down
+          the stack.
         </span>
       ),
       type: "number",
@@ -359,7 +363,8 @@ A wrapper that holds the dialogs in a stack.
       name: "offsetOpacity",
       nameDetails: (
         <span>
-          The value added to the opacity of the dialog content, when further down the stack.
+          The value added to the opacity of the dialog content, when further
+          down the stack.
         </span>
       ),
       type: "number",
@@ -368,93 +373,101 @@ A wrapper that holds the dialogs in a stack.
     {
       name: "initial",
       nameDetails: (
-        <span>
-          The initial animation state of the dialog content.
-        </span>
+        <span>The initial animation state of the dialog content.</span>
       ),
       type: "object",
       typeDetails: (
-         <span>
-            <a href="https://www.framer.com/motion/animation/" target="_blank" rel="noreferrer">Motion Props</a>
-         </span>
-      )
+        <span>
+          <a
+            href="https://www.framer.com/motion/animation/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Motion Props
+          </a>
+        </span>
+      ),
     },
     {
       name: "animate",
-      nameDetails: (
-        <span>
-          The animation state of the dialog content.
-        </span>
-      ),
+      nameDetails: <span>The animation state of the dialog content.</span>,
       type: "string",
       typeDetails: (
-         <span>
-            <a href="https://www.framer.com/motion/animation/" target="_blank" rel="noreferrer">Motion Props</a>
-         </span>
-      )
+        <span>
+          <a
+            href="https://www.framer.com/motion/animation/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Motion Props
+          </a>
+        </span>
+      ),
     },
     {
       name: "exit",
-      nameDetails: (
-        <span>
-          The exit animation state of the dialog content.
-        </span>
-      ),
+      nameDetails: <span>The exit animation state of the dialog content.</span>,
       type: "string",
       typeDetails: (
-         <span>
-            <a href="https://www.framer.com/motion/animation/" target="_blank" rel="noreferrer">Motion Props</a>
-         </span>
-      )
+        <span>
+          <a
+            href="https://www.framer.com/motion/animation/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Motion Props
+          </a>
+        </span>
+      ),
     },
     {
       name: "transition",
       nameDetails: (
-        <span>
-          The transition animation state of the dialog content.
-        </span>
+        <span>The transition animation state of the dialog content.</span>
       ),
       type: "string",
       typeDetails: (
-         <span>
-            <a href="https://www.framer.com/motion/animation/" target="_blank" rel="noreferrer">Motion Props</a>
-         </span>
-      )
+        <span>
+          <a
+            href="https://www.framer.com/motion/animation/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Motion Props
+          </a>
+        </span>
+      ),
     },
-	]}
+  ]}
 />
 
 # Stack Content
- 
-Contains content to be rendered in the open dialog within a stack. See [Content](#content) for more details.
 
-<PropsTable data={[]}/>
+Contains content to be rendered in the open dialog within a stack.
+
+<PropsTable data={[]} />
 
 # Stack Title
 
-An accessible title to be announced when the dialog is opened within a stack. See [Title](#title) for more details.
+An accessible title to be announced when the dialog is opened within a stack.
 
-<PropsTable data={[]}/>
+<PropsTable data={[]} />
 
 # Stack Description
 
-An optional accessible description to be announced when the dialog is opened within a stack. See [Description](#description) for more details.
+An optional accessible description to be announced when the dialog is opened within a stack.
 
-<PropsTable data={[]}/>
+<PropsTable data={[]} />
 
 # Stack Remove
 
 The button that removes the dialog from the stack.
 
 <PropsTable
-	data={[
-		{
-			name: "dialogId",
-      nameDetails: (
-        <span>
-          The id of the dialog to remove from the stack.
-        </span>
-      ),
+  data={[
+    {
+      name: "dialogId",
+      nameDetails: <span>The id of the dialog to remove from the stack.</span>,
       type: "string",
     },
   ]}
@@ -465,14 +478,10 @@ The button that removes the dialog from the stack.
 The button that adds a dialog to the stack.
 
 <PropsTable
-	data={[
-		{
+  data={[
+    {
       name: "dialogId",
-      nameDetails: (
-        <span>
-          The id of the dialog to add to the stack.
-        </span>
-      ),
+      nameDetails: <span>The id of the dialog to add to the stack.</span>,
       type: "string",
     },
   ]}
@@ -480,16 +489,16 @@ The button that adds a dialog to the stack.
 
 # Shared Item
 
-A handy component to share animations between dialogs. Wraps [Framer Motion's](https://www.framer.com/motion/layout-animations/) <Code>motion.div</Code> layout into a more readable and accessible component.
+A handy component to share animations between dialogs. Wraps [Framer's](https://www.framer.com/motion/layout-animations/) <Code>motion.div</Code> layout into a more readable and accessible component.
 
 <PropsTable
-	data={[
-		{
-			name: "layout",
+  data={[
+    {
+      name: "layout",
       nameDetails: (
         <span>
-          If <Code>true</Code>, this component will automatically animate to its new position when
-          its layout changes. 
+          If <Code>true</Code>, this component will automatically animate to its
+          new position when its layout changes.
         </span>
       ),
       type: "enum",
@@ -499,7 +508,8 @@ A handy component to share animations between dialogs. Wraps [Framer Motion's](h
       name: "layoutId",
       nameDetails: (
         <span>
-          Enable shared layout transitions between different components with the same <Code>layoutId</Code>.
+          Enable shared layout transitions between different components with the
+          same <Code>layoutId</Code>.
         </span>
       ),
       type: "string",
@@ -508,7 +518,8 @@ A handy component to share animations between dialogs. Wraps [Framer Motion's](h
       name: "onLayoutAnimationStart",
       nameDetails: (
         <span>
-          A callback that will fire when a layout animation on this component starts.
+          A callback that will fire when a layout animation on this component
+          starts.
         </span>
       ),
       type: "function",
@@ -518,7 +529,8 @@ A handy component to share animations between dialogs. Wraps [Framer Motion's](h
       name: "onLayoutAnimationComplete",
       nameDetails: (
         <span>
-          A callback that will fire when a layout animation on this component completes.
+          A callback that will fire when a layout animation on this component
+          completes.
         </span>
       ),
       type: "function",
