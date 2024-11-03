@@ -18,15 +18,15 @@ export default async function Page() {
 
   const className = clsx(
     "hover:before:scale-100 hover:before:bg-gray-4 hover:text-gray-12 hover:opacity-100",
-    "before:absolute before:top-0 before:left-0 before:-z-10 before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
-    "relative w-fit h-fit px-1.5 flex items-center justify-center rounded-md z-10 bg-transparent transition-all text-muted gap-2",
+    "before:absolute before:top-0 before:left-0 before:-z-[1] before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
+    "relative w-fit h-fit px-1.5 flex items-center justify-center rounded-md z-[1] bg-transparent transition-all text-muted gap-2",
   );
 
   return (
     <React.Fragment>
       <div className="flex flex-col">
         <div className="flex justify-between gap-2">
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-0 font-medium">
             <div>Toldo</div>
           </div>
           <div className="flex gap-2 text-muted">

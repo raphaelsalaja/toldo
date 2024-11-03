@@ -1,3 +1,4 @@
+import { Article } from "@/components/article";
 import "@/styles.css";
 
 import type { Metadata } from "next";
@@ -46,8 +47,8 @@ export default function RootLayout({
       <head />
       <body>
         <ThemeProvider enableSystem={true} attribute="class" storageKey="theme" defaultTheme="system">
-          <main className="mx-auto max-w-screen-sm gap-x-12 overflow-x-hidden px-6 py-24 md:overflow-x-visible">
-            <article className="article ">{children}</article>
+          <main className="mx-auto max-w-screen-md gap-x-12 overflow-x-hidden px-6 py-24 md:overflow-x-visible">
+            <Article className="article ">{children}</Article>
           </main>
         </ThemeProvider>
       </body>

@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import React from "react";
 
-export const PropInformation = ({ information }: { information: string }) => {
+export const PropInformation = ({ content }: { content: React.ReactNode }) => {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -15,10 +15,9 @@ export const PropInformation = ({ information }: { information: string }) => {
       <Popover.Trigger asChild>
         <div
           className={clsx(
-            "relative before:absolute before:top-0 before:left-0 before:-z-10 before:w-full before:h-full",
-            "before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
-            "hover:before:scale-100 hover:before:bg-gray-3 hover:cursor-pointer hover:text-foreground",
-            "w-[24px] h-[24px] flex items-center justify-center rounded-md z-10 bg-transparent transition-all text-muted",
+            "relative before:absolute before:top-0 before:left-0 before:-z-[1] before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
+            "hover:before:scale-100 hover:before:bg-gray-3 hover:text-foreground",
+            "w-[24px] h-[24px] flex items-center justify-center rounded-md z-[0] bg-transparent transition-all text-muted",
           )}
         >
           <InfoCircledIcon />
@@ -36,9 +35,9 @@ export const PropInformation = ({ information }: { information: string }) => {
                   ease: [0.19, 1, 0.22, 1],
                   duration: 0.2,
                 }}
-                className="bg-gray-2 text-gray-11 border border-gray-4 py-2 px-3 rounded-lg shadow text-small flex gap-2 items-center"
+                className="bg-gray-2 text-gray-11 max-w-96 border border-gray-4 py-2 px-3 rounded-lg shadow text-small leading-[18px]  gap-2 items-center inline-block"
               >
-                {information}
+                {content}
               </motion.div>
             </Popover.Content>
           </Popover.Portal>

@@ -172,7 +172,7 @@
     }
 
     [data-highlight]::before {
-      @apply absolute inset-0 -inset-x-1 -z-10 bg-transparent transition scale-y-[1.1] content-[""] duration-500;
+      @apply absolute inset-0 -inset-x-1 -z-[1] bg-transparent transition scale-y-[1.1] content-[""] duration-500;
     }
 
     [data-highlight="true"]::before {
@@ -283,6 +283,10 @@
         @apply text-small;
       }
     }
+  }
+
+  source {
+    @apply text-gray-11 text-small leading-[18px];
   }
 
   * {

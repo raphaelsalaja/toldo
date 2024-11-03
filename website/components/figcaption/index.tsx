@@ -81,9 +81,9 @@ export default function FigCaption({ ...props }: FigCaptionProps) {
         disabled={isCopied}
         onClick={handleClickCopy}
         className={clsx(
-          "relative before:absolute before:top-0 before:left-0 before:-z-10 before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
+          "relative before:absolute before:top-0 before:left-0 before:-z-[1] before:w-full before:h-full before:bg-transparent before:rounded-md before:scale-75 before:content-[''] before:transition-all",
           "hover:before:scale-100 hover:before:bg-gray-3",
-          "w-[24px] h-[24px] flex items-center justify-center rounded-md z-10 bg-transparent transition-all",
+          "w-[24px] h-[24px] flex items-center justify-center rounded-md z-[0] bg-transparent transition-all",
           isCopied && "hover:before:scale-75 hover:before:bg-transparent",
         )}
       >

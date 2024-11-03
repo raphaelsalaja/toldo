@@ -4,21 +4,8 @@ import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import type { Primitive } from "@radix-ui/react-primitive";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion } from "framer-motion";
-import type { AnimationProps, HTMLMotionProps } from "framer-motion";
-import React, { isValidElement, useId } from "react";
-
-const EASE_TRANSITION: AnimationProps["transition"] = {
-  ease: [0.19, 1, 0.22, 1],
-  duration: 0.4,
-};
-
-const STACK_Y_OFFSET = 24;
-
-const STACK_SCALE_OFFSET = 0.05;
-
-const STACK_OPACITY_OFFSET = 0.33;
-
-export { EASE_TRANSITION, STACK_Y_OFFSET, STACK_SCALE_OFFSET, STACK_OPACITY_OFFSET };
+import type { HTMLMotionProps } from "framer-motion";
+import React, { useId } from "react";
 
 interface DialogProps {
   id: string;
@@ -111,10 +98,35 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: init
   );
 };
 
-type DialogRootProps = RadixDialogPrimitive.DialogProps;
+type DialogRootProps = RadixDialogPrimitive.DialogProps & {
+  dialogs?: DialogProps[];
+};
 
-const DialogRoot: React.FC<DialogRootProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Root {...props}>{children}</RadixDialogPrimitive.Root>;
+const DialogRoot: React.FC<DialogRootProps> = ({ children, dialogs, onOpenChange, ...props }) => {
+  return (
+    <DialogProvider dialogs={dialogs}>
+      <DialogRootContent onOpenChange={onOpenChange} {...props}>
+        {children}
+      </DialogRootContent>
+    </DialogProvider>
+  );
+};
+
+const DialogRootContent: React.FC<DialogRootProps> = ({ children, onOpenChange, ...props }) => {
+  const { clearDialogs } = useDialogContext();
+
+  const handleOpenChange = (open: boolean) => {
+    onOpenChange?.(open);
+    if (!open) {
+      clearDialogs();
+    }
+  };
+
+  return (
+    <RadixDialogPrimitive.Root onOpenChange={handleOpenChange} {...props}>
+      {children}
+    </RadixDialogPrimitive.Root>
+  );
 };
 
 interface DialogTriggerProps extends RadixDialogPrimitive.DialogTriggerProps {
@@ -187,25 +199,16 @@ const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props 
 };
 
 interface DialogStackProps extends RadixDialogPrimitive.DialogContentProps {
-  offsets?: {
-    y: number;
-    scale: number;
-    opacity: number;
-  };
+  offsetY?: number;
+  offsetScale?: number;
+  offsetOpacity?: number;
   initial?: HTMLMotionProps<"div">["initial"];
   animate?: HTMLMotionProps<"div">["animate"];
   exit?: HTMLMotionProps<"div">["exit"];
   transition?: HTMLMotionProps<"div">["transition"];
 }
 
-const DialogStack: React.FC<DialogStackProps> = ({
-  offsets = {
-    y: STACK_Y_OFFSET,
-    scale: STACK_SCALE_OFFSET,
-    opacity: STACK_OPACITY_OFFSET,
-  },
-  ...props
-}) => {
+const DialogStack: React.FC<DialogStackProps> = ({ offsetY = 24, offsetScale = 0.05, offsetOpacity = 0.33, ...props }) => {
   const { dialogs, clearDialogs } = useDialogContext();
   const openDialogs = dialogs.filter((dialog) => dialog.open);
 
@@ -238,6 +241,7 @@ const DialogStack: React.FC<DialogStackProps> = ({
       >
         <VisuallyHidden.Root>
           <DialogTitle>Title</DialogTitle>
+          <DialogDescription>Description</DialogDescription>
         </VisuallyHidden.Root>
         <AnimatePresence initial={false}>
           {openDialogs.map((dialog, index) => {
@@ -248,18 +252,18 @@ const DialogStack: React.FC<DialogStackProps> = ({
                 id={dialog.id}
                 initial={{
                   scale: 1,
-                  y: STACK_Y_OFFSET,
+                  y: offsetY,
                   opacity: 0,
                 }}
                 animate={{
-                  y: position * -offsets.y,
+                  y: position * -offsetY,
                   zIndex: openDialogs.length - position,
-                  scale: 1 - offsets.scale * position,
-                  opacity: 1 - offsets.opacity * position,
+                  scale: 1 - offsetScale * position,
+                  opacity: 1 - offsetOpacity * position,
                 }}
                 exit={{
                   scale: 1,
-                  y: STACK_Y_OFFSET * 2,
+                  y: offsetY * 2,
                   opacity: 0,
                 }}
                 transition={{
@@ -311,24 +315,39 @@ const DialogStackDescription: React.FC<DialogStackDescriptionProps> = ({ childre
   );
 };
 
-interface DialogButtonProps extends HTMLMotionProps<"button"> {
-  kind?: "default" | "open" | "close";
-  dialogId?: string;
+interface DialogStackRemoveProps extends HTMLMotionProps<"button"> {
+  dialogId: string;
 }
 
-const DialogButton: React.FC<DialogButtonProps> = ({ kind = "default", dialogId, children, ...props }) => {
-  const { openDialog, closeDialog } = useDialogContext();
+const DialogStackRemove: React.FC<DialogStackRemoveProps> = ({ dialogId, children, ...props }) => {
+  const { closeDialog } = useDialogContext();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (props.onClick) {
       props.onClick(event);
     }
+    closeDialog(dialogId);
+  };
 
-    if (kind === "open" && dialogId) {
-      openDialog(dialogId);
-    } else if (kind === "close" && dialogId) {
-      closeDialog(dialogId);
+  return (
+    <motion.button type="button" {...props} onClick={handleClick}>
+      {children}
+    </motion.button>
+  );
+};
+
+interface DialogStackAddProps extends HTMLMotionProps<"button"> {
+  dialogId: string;
+}
+
+const DialogStackAdd: React.FC<DialogStackAddProps> = ({ dialogId, children, ...props }) => {
+  const { openDialog } = useDialogContext();
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (props.onClick) {
+      props.onClick(event);
     }
+    openDialog(dialogId);
   };
 
   return (
@@ -339,7 +358,6 @@ const DialogButton: React.FC<DialogButtonProps> = ({ kind = "default", dialogId,
 };
 
 export {
-  DialogProvider as Provider,
   DialogRoot as Root,
   DialogTrigger as Trigger,
   DialogPortal as Portal,
@@ -348,7 +366,8 @@ export {
   DialogStackContent as StackContent,
   DialogStackTitle as StackTitle,
   DialogStackDescription as StackDescription,
-  DialogButton as Button,
+  DialogStackRemove as StackRemove,
+  DialogStackAdd as StackAdd,
   DialogContent as Content,
   DialogClose as Close,
   DialogTitle as Title,
@@ -358,7 +377,6 @@ export {
 
 export type {
   DialogProps as Props,
-  DialogProviderProps as ProviderProps,
   DialogRootProps as RootProps,
   DialogTriggerProps as TriggerProps,
   DialogPortalProps as PortalProps,
@@ -367,7 +385,8 @@ export type {
   DialogStackContentProps as StackContentProps,
   DialogStackTitleProps as StackTitleProps,
   DialogStackDescriptionProps as StackDescriptionProps,
-  DialogButtonProps as ButtonProps,
+  DialogStackRemoveProps as StackRemoveProps,
+  DialogStackAddProps as StackAddProps,
   DialogContentProps as ContentProps,
   DialogCloseProps as CloseProps,
   DialogTitleProps as TitleProps,

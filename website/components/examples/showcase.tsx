@@ -24,13 +24,12 @@ export const Showcase = () => {
             <Dialog.Close className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150">
               Close
             </Dialog.Close>
-            <Dialog.Button
-              kind="open"
+            <Dialog.StackAdd
               dialogId="dialog-two"
               className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
               Continue
-            </Dialog.Button>
+            </Dialog.StackAdd>
           </div>
         </Dialog.StackContent>
       ),
@@ -50,20 +49,18 @@ export const Showcase = () => {
             app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
           </Dialog.StackDescription>
           <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
-            <Dialog.Button
-              kind="close"
+            <Dialog.StackRemove
               dialogId="dialog-two"
               className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
               Go Back
-            </Dialog.Button>
-            <Dialog.Button
-              kind="open"
+            </Dialog.StackRemove>
+            <Dialog.StackAdd
               dialogId="dialog-three"
               className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
               Continue
-            </Dialog.Button>
+            </Dialog.StackAdd>
           </div>
         </Dialog.StackContent>
       ),
@@ -83,13 +80,12 @@ export const Showcase = () => {
             app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
           </Dialog.StackDescription>
           <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
-            <Dialog.Button
-              kind="close"
+            <Dialog.StackRemove
               dialogId="dialog-three"
               className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
               Go Back
-            </Dialog.Button>
+            </Dialog.StackRemove>
             <Dialog.Close className="!text-green-11 h-[32px] max-w-fit rounded-lg bg-green-a3 px-3 transition-all ease-in-out hover:brightness-150">
               Complete
             </Dialog.Close>
@@ -138,35 +134,24 @@ export const Showcase = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Dialog.Provider dialogs={dialogs}>
-      <Dialog.Root open={open} onOpenChange={setOpen}>
-        <Dialog.Trigger
-          dialogId="dialog-one"
-          className="h-[32px] rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3 transition-all ease-in-out hover:brightness-95"
-        >
-          Open Dialog
-        </Dialog.Trigger>
+    <Dialog.Root open={open} onOpenChange={setOpen} dialogs={dialogs}>
+      <Dialog.Trigger
+        dialogId="dialog-one"
+        className="h-[32px] rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3 transition-all ease-in-out hover:brightness-95"
+      >
+        Open Dialog
+      </Dialog.Trigger>
 
-            <Dialog.Portal forceMount>
-            <AnimatePresence>
-            {open && (
-              <Dialog.Overlay className="fixed left-0 top-0 w-full h-full">
-              
-                <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
-              
-              
-              </Dialog.Overlay>
-            )}
-            </AnimatePresence>
-              <AnimatePresence>
-              {open && (
-              <Dialog.Stack {...variants.stack} />
-            )}
-            </AnimatePresence>
-            </Dialog.Portal>
-
-
-      </Dialog.Root>
-    </Dialog.Provider>
+      <Dialog.Portal forceMount>
+        <AnimatePresence>
+          {open && (
+            <Dialog.Overlay className="fixed left-0 top-0 w-full h-full">
+              <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
+            </Dialog.Overlay>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>{open && <Dialog.Stack {...variants.stack} />}</AnimatePresence>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 };
