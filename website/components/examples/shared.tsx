@@ -2,18 +2,11 @@
 
 import type { AnimationProps } from "framer-motion";
 
-
-
+import { AnimatePresence, motion } from "framer-motion";
+import React from "react";
 import * as Dialog from "toldo";
 
-import React, {useContext, useRef} from "react";
-import { motion, AnimatePresence } from 'framer-motion';
- 
-
- 
-
-
-export const Basic = () => {
+export const SharedAnimation = () => {
   const [open, setOpen] = React.useState(false);
 
   const variants: { [key: string]: AnimationProps } = {
@@ -52,8 +45,6 @@ export const Basic = () => {
     },
   };
 
- 
-
   return (
     <Dialog.Provider>
       <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -70,9 +61,9 @@ export const Basic = () => {
                 <motion.div {...variants.content} className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
                   <div className="flex flex-col gap-2 px-6 pt-6">
                     <Dialog.Title className="font-semibold text-foreground text-large">Dialog Title</Dialog.Title>
-                    <Dialog.Subtitle className="text-default text-muted">
+                    <h3 className="text-default text-muted">
                       A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
-                    </Dialog.Subtitle>
+                    </h3>
                   </div>
                   <Dialog.Description className="mt-0 p-6 pt-4 text-default">
                     A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs

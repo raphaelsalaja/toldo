@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 import { motion } from "framer-motion";
 import React, { useCallback, useEffect, useState } from "react";
 
-export const TableOfContents = () => {
+export const OnThisPage = () => {
   const [headings, setHeadings] = useState<
     {
       id: string;
@@ -101,24 +101,23 @@ export const TableOfContents = () => {
           duration: 0.25,
         }}
         className={cn(
-          "top-[10rem] right-auto left-[2rem] hidden",
-          "xl:top-[6rem] xl:right-[6rem] xl:left-auto xl:block",
+          "top-[10rem] -right-[128px] hidden",
+          "xl:top-[6rem] xl:right-[64px] xl:block",
           "fixed mt-0 h-full w-48 justify-start space-y-4 transition",
         )}
       >
-        <div className="mt-0 flex flex-col gap-0">
+        <div className="mt-0 flex flex-col gap-1">
           {headings.map((heading) => (
             <div key={heading.id} className="mt-0">
               <button
                 type="button"
                 onClick={() => scroll(heading.id)}
                 className={cn({
-                  "mt-0 ml-2 border-l border-l-gray-4 py-1 text-left text-muted opacity-100 transition ease-in-out hover:opacity-50": true,
+                  "mt-0 ml-2 py-1 text-left text-muted opacity-100 transition ease-in-out hover:opacity-50": true,
                   "text-bold text-gray-12": visibleHeadings.has(heading.id),
-                  "pl-4": heading.level === "h1",
-                  "pl-6": heading.level === "h2",
-                  "pl-7": heading.level === "h3",
-                  "border-l border-l-gray-12": visibleHeadings.has(heading.id),
+                  "pl-0": heading.level === "h1",
+                  "pl-8": heading.level === "h2",
+                  "pl-12": heading.level === "h3",
                 })}
                 data-active={visibleHeadings.has(heading.id) ? "true" : "false"}
               >

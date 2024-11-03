@@ -6,13 +6,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: calc(100% + 128px);
     min-height: 384px;
     padding: 48px;
     margin-top: 4px;
     border-color: var(--border);
     border-width: 1px;
     border-radius: var(--radius-base);
+    left: calc(-64px);
+
+    position: relative;
 
     &[data-with-codeblock="true"] {
       border-bottom-right-radius: 0;

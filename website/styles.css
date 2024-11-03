@@ -43,11 +43,6 @@
 @tailwind utilities;
 
 @layer base {
-  /*
-  * We are using the Radix UI Colors package to generate a set of color variables that can be used in the project.
-  * @see: https://colors.radix-ui.com/
-  */
-
   :root {
     --bg: var(--gray-1);
     --fg: var(--gray-12);
@@ -88,34 +83,25 @@
   }
 
   html {
-    @apply text-default text-foreground bg-background;
+    @apply text-default text-foreground bg-background font-normal;
 
-    h1 {
-      @apply text-huge;
-    }
-
-    h2 {
-      @apply text-large;
-    }
-
+    h1,
+    h2,
     p {
       @apply text-default;
     }
 
     h1,
     h2,
+    h3 {
+      @apply font-medium;
+    }
+    h2,
     h3,
     h4,
     h5,
     h6 {
-      @apply font-medium;
-    }
-
-    h2,
-    h3,
-    sub,
-    sup {
-      @apply text-muted;
+      @apply font-normal;
     }
 
     sub {
@@ -158,7 +144,7 @@
 
     h1 + p,
     h2 + p {
-      margin-top: 8px !important;
+      margin-top: 4px !important;
     }
 
     figure + h1,
@@ -181,10 +167,6 @@
       margin-top: 24px;
     }
 
-    /*
-    * This handles our highlighting on selection of a table of contents item.
-    */
-
     [data-highlight] {
       @apply relative;
     }
@@ -200,10 +182,6 @@
     [data-highlight="false"]::before {
       @apply bg-transparent scale-y-100;
     }
-
-    /* 
-    * Here we are setting up the styles for our footnotes and references.
-    */
 
     .footnotes {
       position: relative;
@@ -246,18 +224,6 @@
     }
   }
 
-  /* 
-  * We are using rehypye-pretty to style the code blocks in the project.
-  * rehype-pretty-code is a Rehype plugin powered by the shiki syntax highlighter that provides beautiful code blocks for Markdown or MDX. 
-  * It works on both the server at build-time (avoiding runtime syntax highlighting) and on the client for dynamic highlighting.
-  * @see: https://rehype-pretty.pages.dev/
-  */
-
-  /* 
-  * Here we are setting up the styles needed to enable theme-aware code blocks.
-  * @see: https://rehype-pretty.pages.dev/#multiple-themes-dark-and-light-mode
-  */
-
   html {
     code[data-theme*=" "],
     code[data-theme*=" "] span {
@@ -274,36 +240,34 @@
     }
   }
 
-  /* 
-  * Here we are setting up the styles needed to enable line numbers in code blocks.
-  * @see: https://rehype-pretty.pages.dev/#line-numbers
-  */
-
   html {
     code[data-line-numbers] {
       counter-reset: line;
     }
 
     code[data-line-numbers] > [data-line]::before {
+      counter-increment: line;
+      content: counter(line);
+
       display: inline-block;
       width: 12px;
-      margin-right: 2rem;
-      color: gray;
+      margin-right: 24px;
+      color: var(--muted);
       text-align: right;
       content: counter(line);
       counter-increment: line;
     }
 
     code[data-line-numbers-max-digits="2"] > [data-line]::before {
-      width: 1.25rem;
+      width: 16px;
     }
 
     code[data-line-numbers-max-digits="3"] > [data-line]::before {
-      width: 1.75rem;
+      width: 24px;
     }
 
     code[data-line-numbers-max-digits="4"] > [data-line]::before {
-      width: 2.25rem;
+      width: 32px;
     }
 
     p [data-line] {
@@ -311,16 +275,15 @@
       margin-right: 2px;
       margin-left: 2px;
       text-align: center;
-      background-color: var(--kbd-background) !important;
       border-radius: 4px;
-      box-shadow: 0 0 0 1px var(--kbd-border);
+    }
+
+    code {
+      span[data-line] {
+        @apply text-small;
+      }
     }
   }
-
-  /* 
-  * Here we are just some additional styles to make the code blocks look better.
-  * @see: https://rehype-pretty.pages.dev/#styles
-  */
 
   * {
     pre {
@@ -338,6 +301,7 @@
       margin-top: 4px;
       border: 1px solid var(--border);
       border-radius: var(--radius-base);
+      overflow: hidden;
     }
   }
 }

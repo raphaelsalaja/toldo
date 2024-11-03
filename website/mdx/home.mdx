@@ -1,15 +1,343 @@
----
-title: "Basic"
-time:
-  created: "2024-09-18T19:24:46.167Z"
-  updated: "2024-10-27T19:36:01.589Z"
-summary: "Basic usage of the library."
----
-
 <ComponentContainer>
-  <BasicExample/>
+  <ShowcaseExample/>
 </ComponentContainer>
+
+# Introduction
+
+Toldo is an elevated component built on top of <Code>@radix-ui</Code> that provides a few extra features to make it easier to work with dialogs in your application.
+
+# Installation
+
+Install the component from your command line.
+
+```bash title="terminal"
+pnpm install toldo/dialog
+```
+
+# Anatomy
+
+There are two variations of the dialog component, the basic dialog and the stacked dialog. 
+The basic dialog is a single dialog that can be opened and closed. Very similar to the native <Code>dialog</Code> element provided by radix.
+The stacked variation is a more abstract way, where you can have multiple dialogs stacked on top of each other. This is useful when you want to have multiple dialogs in the same context.
+
+```tsx title="basic-dialog.tsx"
+import * as Dialog from "@radix-ui/react-dialog";
+
+export default () => (
+  <Dialog.Root>
+    <Dialog.Trigger />
+    <Dialog.Portal>
+      <Dialog.Overlay />
+      <Dialog.Content>
+        <Dialog.Title />
+        <Dialog.Description />
+        <Dialog.Close />
+      </Dialog.Content>
+    </Dialog.Portal>
+  </Dialog.Root>
+);
+```
+
+
+```tsx title="stacked-dialog.tsx"
+import * as Dialog from "@radix-ui/react-dialog";
+
+export default () => (
+  <Dialog.Provider>
+    <Dialog.Root>
+      <Dialog.Trigger />
+      <Dialog.Portal>
+        <Dialog.Overlay />
+        <Dialog.Stack />
+      </Dialog.Portal>
+    </Dialog.Root>
+  </Dialog.Provider>
+);
+```
+
+# API Reference
+
+## Dialog 
+
+The basic dialog component that can be used to create a single dialog. Needed for stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "id",
+      },
+      type: {
+        title: "string",
+      }
+    },
+  ]}
+/>
+
+## Provider
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Portal
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Root
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Trigger
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Overlay
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Content
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Close
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Title
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Subtitle
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Description
+
+Wraps your app to provide global functionality to your dialogs. Only used with stacked dialogs.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "dialogs",
+      },
+      type: {
+        title: "array",
+        info: "Dialog[]"
+      }
+    },
+  ]}
+/>
+
+## Shared Item
+
+
+
+A shared item that can be used for layout animations.
+
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "layout",
+      },
+      type: {
+        title: "boolean | 'position' | 'size' | 'preserve-aspect'",
+      }
+    },
+    {
+      name: {
+        title: "layoutId",
+      },
+      type: {
+        title: "string",
+      }
+    },
+  ]}
+/>
+
+## Stack
+
+Contains the dialogs that are stacked on top of each other.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "offsets",
+        information: "These contains the reduction in value of certain styles of a dialog, within a stack depending on the position of the dialog within the stack."
+      },
+      type: {
+        title: "object",
+        information: "{ y: number, scale: number, opacity: number }"
+      }
+    },
+    {
+      name: {
+        title: "transition",
+      },
+      type: {
+        title: "object",
+        information: "AnimationProps['transition']"
+      }
+    },
+  ]}
+/>
+
+## Button
+
+This should only be used within a stack dialog. It will open the dialog when clicked.
+
+<APITable
+  data={[
+    {
+      name: {
+        title: "kind",
+      },
+      type: {
+        title: "enum",
+        information: `"default" | "open" | "close"`
+      }
+    },
+  ]}
+/>
+
+# Examples
+
+## Stacked Dialogs
 
 <ComponentContainer>
   <StackedExample/>
+</ComponentContainer>
+
+## Shared Animations
+
+<ComponentContainer>
+  <SharedAnimationExample/>
 </ComponentContainer>

@@ -2,9 +2,11 @@
 
 import * as RadixDialogPrimitive from "@radix-ui/react-dialog";
 import type { Primitive } from "@radix-ui/react-primitive";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { AnimatePresence, motion } from "framer-motion";
 import type { AnimationProps, HTMLMotionProps } from "framer-motion";
-import React from "react";
+import React, { isValidElement, useId } from "react";
+
 
 const EASE_TRANSITION: AnimationProps["transition"] = {
   ease: [0.19, 1, 0.22, 1],
@@ -22,10 +24,15 @@ export { EASE_TRANSITION, STACK_Y_OFFSET, STACK_SCALE_OFFSET, STACK_OPACITY_OFFS
 interface DialogProps {
   id: string;
   open?: boolean;
-  dialog: React.ReactNode;
+  dialog: React.ReactElement;
 }
 
 interface DialogContextProps {
+  id: {
+    title: string;
+    description: string;
+    content: string;
+  };
   dialogs: DialogProps[];
   openDialog: (id: string) => void;
   closeDialog: (id: string) => void;
@@ -93,6 +100,11 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: init
         openDialog,
         closeDialog,
         clearDialogs,
+        id: {
+          title: `toldo-${useId()}`,
+          description: `toldo-${useId()}`,
+          content: `toldo-${useId()}`,
+        },
       }}
     >
       {children}
@@ -103,21 +115,7 @@ const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: init
 type DialogRootProps = RadixDialogPrimitive.DialogProps;
 
 const DialogRoot: React.FC<DialogRootProps> = ({ children, ...props }) => {
-  const { dialogs, clearDialogs } = useDialogContext();
-  return (
-    <RadixDialogPrimitive.Root
-      open={dialogs.some((dialog) => dialog.open)}
-      onOpenChange={(open) => {
-        props.onOpenChange?.(open);
-        if (!open) {
-          clearDialogs();
-        }
-      }}
-      {...props}
-    >
-      {children}
-    </RadixDialogPrimitive.Root>
-  );
+  return <RadixDialogPrimitive.Root {...props}>{children}</RadixDialogPrimitive.Root>;
 };
 
 interface DialogTriggerProps extends RadixDialogPrimitive.DialogTriggerProps {
@@ -158,7 +156,18 @@ const DialogOverlay: React.FC<DialogOverlayProps> = ({ children, ...props }) => 
 type DialogContentProps = RadixDialogPrimitive.DialogContentProps;
 
 const DialogContent: React.FC<DialogContentProps> = ({ children, ...props }) => {
-  return <RadixDialogPrimitive.Content {...props}>{children}</RadixDialogPrimitive.Content>;
+  const { clearDialogs } = useDialogContext();
+  return (
+    <RadixDialogPrimitive.Content
+      onPointerDownOutside={(event) => {
+        props.onPointerDownOutside?.(event);
+        clearDialogs();
+      }}
+      {...props}
+    >
+      {children}
+    </RadixDialogPrimitive.Content>
+  );
 };
 
 type DialogCloseProps = RadixDialogPrimitive.DialogCloseProps;
@@ -173,11 +182,6 @@ const DialogTitle: React.FC<DialogTitleProps> = ({ children, ...props }) => {
   return <RadixDialogPrimitive.Title {...props}>{children}</RadixDialogPrimitive.Title>;
 };
 
-type DialogSubtitleProps = React.ComponentPropsWithoutRef<typeof Primitive.h3> & React.HTMLAttributes<HTMLHeadingElement>;
-
-const DialogSubtitle: React.FC<DialogSubtitleProps> = ({ children, ...props }) => {
-  return <div {...props}>{children}</div>;
-};
 
 type DialogDescriptionProps = RadixDialogPrimitive.DialogDescriptionProps;
 
@@ -188,10 +192,14 @@ const DialogDescription: React.FC<DialogDescriptionProps> = ({ children, ...prop
 type DialogSharedItemProps = HTMLMotionProps<"div">;
 
 const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props }) => {
-  return <motion.div {...props}>{children}</motion.div>;
+  return (
+    <motion.div layout {...props}>
+      {children}
+    </motion.div>
+  );
 };
 
-interface DialogStackProps extends HTMLMotionProps<"ul"> {
+interface DialogStackProps extends RadixDialogPrimitive.DialogContentProps {
   offsets?: {
     y: number;
     scale: number;
@@ -209,61 +217,99 @@ const DialogStack: React.FC<DialogStackProps> = ({
   transition = EASE_TRANSITION,
   ...props
 }) => {
-  const { dialogs } = useDialogContext();
+  const { id, dialogs } = useDialogContext();
   const openDialogs = dialogs.filter((dialog) => dialog.open);
 
   return (
-    <motion.ul
-      {...props}
-      style={{
-        display: "flex",
-        position: "fixed",
-        top: "0",
-        right: "0",
-        bottom: "0",
-        left: "0",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <AnimatePresence initial={false}>
-        {openDialogs.map((dialog, index) => {
-          const position = openDialogs.length - index - 1;
-          return (
-            <motion.li
-              data-toldo-dialog-id={dialog.id}
-              key={dialog.id}
-              initial={{
-                scale: 1,
-                y: STACK_Y_OFFSET * 2,
-                opacity: 0,
-              }}
-              animate={{
-                y: position * -offsets.y,
-                zIndex: openDialogs.length - position,
-                scale: 1 - offsets.scale * position,
-                opacity: 1 - offsets.opacity * position,
-              }}
-              exit={{
-                scale: 1,
-                y: STACK_Y_OFFSET * 2,
-                opacity: 0,
-              }}
-              transition={{
-                ease: [0.19, 1, 0.22, 1],
-                duration: 0.6,
-              }}
-              style={{
-                position: "absolute",
-                listStyle: "none",
-              }}
-            >
-              {dialog.dialog}
-            </motion.li>
-          );
-        })}
-      </AnimatePresence>
-    </motion.ul>
+    <DialogContent {...props}>
+      <VisuallyHidden.Root>
+        <DialogTitle>Title</DialogTitle>
+      </VisuallyHidden.Root>
+      <motion.ul
+        style={{
+          display: "flex",
+          position: "fixed",
+          top: "0",
+          right: "0",
+          bottom: "0",
+          left: "0",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <AnimatePresence initial={false}>
+          {openDialogs.map((dialog, index) => {
+            const position = openDialogs.length - index - 1;
+            return (
+              <motion.li
+                key={dialog.id}
+                id={dialog.id}
+                initial={{
+                  scale: 1,
+                  y: STACK_Y_OFFSET * 2,
+                  opacity: 0,
+                }}
+                animate={{
+                  y: position * -offsets.y,
+                  zIndex: openDialogs.length - position,
+                  scale: 1 - offsets.scale * position,
+                  opacity: 1 - offsets.opacity * position,
+                }}
+                exit={{
+                  scale: 1,
+                  y: STACK_Y_OFFSET * 2,
+                  opacity: 0,
+                }}
+                transition={{
+                  ease: [0.19, 1, 0.22, 1],
+                  duration: 0.6,
+                }}
+                style={{
+                  position: "absolute",
+                  listStyle: "none",
+                }}
+              >
+                {dialog.dialog}
+              </motion.li>
+            );
+          })}
+        </AnimatePresence>
+      </motion.ul>
+    </DialogContent>
+  );
+};
+
+type DialogStackContentProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> & React.HTMLAttributes<HTMLHeadingElement>;
+const DialogStackContent: React.FC<DialogStackContentProps> = ({ children, ...props }) => {
+  const { id } = useDialogContext();
+  return (
+    <div id={id.content} aria-labelledby={id.title} aria-describedby={id.description} {...props}>
+      {children}
+    </div>
+  );
+};
+
+type DialogStackTitleProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> & React.HTMLAttributes<HTMLHeadingElement>;
+const DialogStackTitle: React.FC<DialogStackTitleProps> = ({ children, ...props }) => {
+  const { id } = useDialogContext();
+  return (
+
+    <h2 id={id.title} {...props}>
+      {children}
+    </h2>
+  );
+};
+
+
+type DialogStackDescriptionProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> & React.HTMLAttributes<HTMLHeadingElement>;
+const DialogStackDescription: React.FC<DialogStackDescriptionProps> = ({ children, ...props }) => {
+  const { id } = useDialogContext();
+  return (
+    <p id={id.description} 
+
+    {...props}>
+      {children}
+    </p>
   );
 };
 
@@ -301,11 +347,13 @@ export {
   DialogPortal as Portal,
   DialogOverlay as Overlay,
   DialogStack as Stack,
+  DialogStackContent as StackContent,
+  DialogStackTitle as StackTitle,
+  DialogStackDescription as StackDescription,
   DialogButton as Button,
   DialogContent as Content,
   DialogClose as Close,
   DialogTitle as Title,
-  DialogSubtitle as Subtitle,
   DialogDescription as Description,
   DialogSharedItem as Item,
 };
@@ -318,11 +366,13 @@ export type {
   DialogPortalProps as PortalProps,
   DialogOverlayProps as OverlayProps,
   DialogStackProps as StackProps,
+  DialogStackContentProps as StackContentProps,
+  DialogStackTitleProps as StackTitleProps,
+  DialogStackDescriptionProps as StackDescriptionProps,
   DialogButtonProps as ButtonProps,
   DialogContentProps as ContentProps,
   DialogCloseProps as CloseProps,
   DialogTitleProps as TitleProps,
-  DialogSubtitleProps as SubtitleProps,
   DialogDescriptionProps as DescriptionProps,
   DialogSharedItemProps as ItemProps,
 };

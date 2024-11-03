@@ -36,5 +36,3 @@ export function getDocumentation(): Post[] {
   // get the file named home
   return files.map((file) => readFile(path.join(process.cwd(), "mdx", file))).filter((post): post is Post => post !== null);
 }
-
-

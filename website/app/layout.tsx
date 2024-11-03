@@ -2,21 +2,39 @@ import "@/styles.css";
 
 import type { Metadata } from "next";
 
-
-import { AppThemeProvider } from "@/components/theme-provider";
-import { OpenGraph } from "@/lib/og";
-
-import clsx from "clsx";
- import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
-  ...OpenGraph,
+  title: "Toldo",
+  description: "A modal component for React",
+  keywords: ["Dialog", "Modal", "React", "Component"],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://toldo.vercel.app/",
+    title: "Toldo",
+    description: "A modal component for React",
+    images: ["https://toldo.vercel.app/introduction/og.png"],
+    siteName: "Toldo",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Toldo",
+    description: "A modal component for React",
+    images: ["https://toldo.vercel.app/introduction/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export default function RootLayout({
   children,
@@ -24,13 +42,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx(inter.className)} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head />
       <body>
-        <AppThemeProvider>
-            <main className="mx-auto max-w-screen-sm gap-x-12 overflow-x-hidden px-6 py-24 md:overflow-x-visible">
-              <article className="article ">{children}</article>
-            </main>
-         </AppThemeProvider>
+        <ThemeProvider enableSystem={true} attribute="class" storageKey="theme" defaultTheme="system">
+          <main className="mx-auto max-w-screen-sm gap-x-12 overflow-x-hidden px-6 py-24 md:overflow-x-visible">
+            <article className="article ">{children}</article>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

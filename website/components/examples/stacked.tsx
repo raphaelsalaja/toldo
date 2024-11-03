@@ -7,94 +7,46 @@ import * as Dialog from "toldo";
 export const Stacked = () => {
   const dialogs: Dialog.Props[] = [
     {
-      id: "dialog-one",
+      id: "example-dialog-1",
       dialog: (
-        <Dialog.Content className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
-          <div className="flex flex-col gap-2 px-6 pt-6">
-            <Dialog.Title className="font-semibold text-foreground text-large">Dialog Title</Dialog.Title>
-            <Dialog.Subtitle className="text-default text-muted">
-              A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
-            </Dialog.Subtitle>
-          </div>
-          <Dialog.Description className="mt-0 p-6 pt-4 text-default">
-            A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all
-            app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
-          </Dialog.Description>
-          <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
-            <Dialog.Close className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150">
-              Close
-            </Dialog.Close>
-            <Dialog.Button
-              kind="open"
-              dialogId="dialog-two"
-              className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150"
-            >
-              Continue
-            </Dialog.Button>
-          </div>
-        </Dialog.Content>
+        <Dialog.StackContent>
+          <Dialog.StackTitle>Title</Dialog.StackTitle>
+          <Dialog.StackDescription>Description</Dialog.StackDescription>
+          <Dialog.Close>Close</Dialog.Close>
+          <Dialog.Button kind="open" dialogId="example-dialog-2">
+            Continue
+          </Dialog.Button>
+        </Dialog.StackContent>
       ),
     },
     {
-      id: "dialog-two",
+      id: "example-dialog-2",
       dialog: (
-        <Dialog.Content className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
-          <div className="flex flex-col gap-2 px-6 pt-6">
-            <Dialog.Title className="font-semibold text-foreground text-large">Dialog Title</Dialog.Title>
-            <Dialog.Subtitle className="text-default text-muted">
-              A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
-            </Dialog.Subtitle>
-          </div>
-          <Dialog.Description className="mt-0 p-6 pt-4 text-default">
-            A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all
-            app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
-          </Dialog.Description>
-          <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
-            <Dialog.Button
-              kind="close"
-              dialogId="dialog-two"
-              className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150"
-            >
-              Go Back
-            </Dialog.Button>
-            <Dialog.Button
-              kind="open"
-              dialogId="dialog-three"
-              className="!text-blue-11 h-[32px] max-w-fit rounded-lg bg-blue-a3 px-3 transition-all ease-in-out hover:brightness-150"
-            >
-              Continue
-            </Dialog.Button>
-          </div>
-        </Dialog.Content>
+        <Dialog.StackContent>
+          <Dialog.StackTitle>Title</Dialog.StackTitle>
+
+          <Dialog.StackDescription>Description</Dialog.StackDescription>
+          <Dialog.Button kind="close" dialogId="example-dialog-2">
+            Go Back
+          </Dialog.Button>
+          <Dialog.Button kind="open" dialogId="example-dialog-3">
+            Continue
+          </Dialog.Button>
+        </Dialog.StackContent>
       ),
     },
     {
-      id: "dialog-three",
+      id: "example-dialog-3",
       dialog: (
-        <Dialog.Content className="flex w-[512px] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1">
-          <div className="flex flex-col gap-2 px-6 pt-6">
-            <Dialog.Title className="font-semibold text-foreground text-large">Dialog Title</Dialog.Title>
-            <Dialog.Subtitle className="text-default text-muted">
-              A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
-            </Dialog.Subtitle>
-          </div>
-          <Dialog.Description className="mt-0 p-6 pt-4 text-default">
-            A dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all
-            app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken.
-          </Dialog.Description>
-          <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
-            <Dialog.Button
-              kind="close"
-              dialogId="dialog-three"
-              className="!text-red-11 h-[32px] max-w-fit rounded-lg bg-red-a3 px-3 transition-all ease-in-out hover:brightness-150"
-            >
-              Go Back
-            </Dialog.Button>
-            <Dialog.Close className="!text-green-11 h-[32px] max-w-fit rounded-lg bg-green-a3 px-3 transition-all ease-in-out hover:brightness-150">
-              Complete
-            </Dialog.Close>
-          </div>
-        </Dialog.Content>
+        <Dialog.StackContent>
+          <Dialog.StackTitle>Title</Dialog.StackTitle>
+
+          <Dialog.StackDescription>Description</Dialog.StackDescription>
+          <Dialog.Button kind="close" dialogId="example-dialog-3">
+            Return
+          </Dialog.Button>
+          <Dialog.Close>Complete</Dialog.Close>
+        </Dialog.StackContent>
       ),
     },
   ];
@@ -141,7 +93,7 @@ export const Stacked = () => {
     <Dialog.Provider dialogs={dialogs}>
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Trigger
-          dialogId="dialog-one"
+          dialogId="example-dialog-1"
           className="h-[32px] rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3 transition-all ease-in-out hover:brightness-95"
         >
           Open Dialog
