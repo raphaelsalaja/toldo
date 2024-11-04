@@ -1,6 +1,4 @@
 "use client";
-
-import { Cross2Icon } from "@radix-ui/react-icons";
 import { AnimatePresence, type AnimationProps, motion } from "framer-motion";
 import React from "react";
 import * as Dialog from "toldo";
@@ -15,22 +13,26 @@ export const Shared = () => {
       exit: { opacity: 0 },
       transition: { ease: [0.19, 1, 0.22, 1], duration: 0.4 },
     },
+    content: {
+      initial: { scale: 0.9, opacity: 0 },
+      animate: { scale: 1, opacity: 1 },
+      exit: { scale: 0.9, opacity: 0 },
+      transition: { ease: [0.19, 1, 0.22, 1], duration: 0.4 },
+    },
+    button: { 
+      transition: { layout: { ease: [0.19, 1, 0.22, 1], duration: 0.6 } } 
+    },
   };
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>
-        <Dialog.Item
-          layout
-          layoutId="container"
-          className="flex size-24 items-center justify-between gap-2 overflow-hidden"
-          style={{
-            borderRadius: 12,
-          }}
+        <Dialog.Item layout layoutId="action" className="pointer-events-auto flex h-[32px] items-center rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3" {...variants.button}
         >
-          <motion.div layoutId="media" className="relative h-full w-full bg-[#FFBF98]" />
+          Open Dialog
         </Dialog.Item>
       </Dialog.Trigger>
+
       <AnimatePresence>
         {open && (
           <Dialog.Portal forceMount>
@@ -38,25 +40,27 @@ export const Shared = () => {
               <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
             </Dialog.Overlay>
             <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 transform">
-              <Dialog.Item
-                layout
-                layoutId="container"
-                className="overflow-hidden bg-gray-1 sm:w-[512px]"
-                style={{
-                  borderRadius: 12,
-                }}
-              >
-                <Dialog.Item layoutId="media" className="relative flex h-96 w-full flex-col justify-end gap-4 bg-[#FFBF98] p-4">
-                  <div className="flex flex-col gap-0 align-middle">
-                    <Dialog.Title className="font-semibold text-black-a12 text-large">PANTONE®</Dialog.Title>
-                    <h3 className="font-medium text-black-a12">13-1023</h3>
-                    <Dialog.Description className="font-medium text-black-a12 text-default">Peach Fuzz</Dialog.Description>
-                  </div>
-                  <Dialog.Close className="!text-white-a12 absolute top-4 right-4 flex h-[24px] w-[24px] items-center justify-center rounded-full bg-black-a12 align-middle transition-all ease-in-out hover:brightness-90">
-                    <Cross2Icon />
+              <motion.div className="flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]" {...variants.content}>
+                <Dialog.Title className="px-6 pt-5 font-semibold text-foreground text-large">Change Username</Dialog.Title>
+                <Dialog.Description className="px-6 py-1 text-default text-muted">Make changes to your username here.</Dialog.Description>
+                <fieldset className="mb-[15px] flex items-center gap-4 px-6 py-4">
+                  <input
+                    id="name"
+                    placeholder="@raphaelsalaja"
+                    className="inline-flex h-[32px] w-full flex-1 items-center justify-center rounded-lg border border-gray-4 bg-gray-2 px-2.5 text-[15px] text-default leading-none transition-all placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-green-11 focus:ring-offset-2 focus:ring-offset-gray-1"
+                  />
+                </fieldset>
+                <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-5">
+                  <Dialog.Close className="!text-gray-11 h-[32px] max-w-fit rounded-lg bg-gray-a3 px-3 transition-all ease-in-out hover:brightness-150">
+                    Cancel
                   </Dialog.Close>
-                </Dialog.Item>
-              </Dialog.Item>
+                  <motion.div layout layoutId="action" {...variants.button}>
+                    <Dialog.Close className="flex h-[32px] items-center rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3">
+                      Save Changes
+                    </Dialog.Close>
+                  </motion.div>
+                </div>
+              </motion.div>
             </Dialog.Content>
           </Dialog.Portal>
         )}
