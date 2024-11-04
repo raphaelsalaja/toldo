@@ -11,7 +11,7 @@ export const Basic = () => {
         <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 flex max-h-[85vh] w-[80vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]">
           <Dialog.Title className="px-6 pt-5 font-semibold text-foreground text-large">Change Username</Dialog.Title>
           <Dialog.Description className="px-6 py-1 text-default text-muted">Make changes to your username here.</Dialog.Description>
-          <fieldset className="mb-[15px] flex items-center gap-4 px-6 py-5">
+          <fieldset className="mb-[15px] flex items-center gap-4 px-6 py-4">
             <input
               id="name"
               placeholder="@raphaelsalaja"
