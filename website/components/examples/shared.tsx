@@ -46,13 +46,13 @@ export const Shared = () => {
                   borderRadius: 12,
                 }}
               >
-                <Dialog.Item layoutId="media" className="relative flex h-96 w-full flex-col justify-end gap-4 bg-[#FFBF98] p-6">
+                <Dialog.Item layoutId="media" className="relative flex h-96 w-full flex-col justify-end gap-4 bg-[#FFBF98] p-4">
                   <div className="flex flex-col gap-0 align-middle">
-                    <Dialog.Title className="font-semibold text-foreground text-large">PANTONE®</Dialog.Title>
-                    <h3>13-1023</h3>
-                    <Dialog.Description className="text-default">Peach Fuzz</Dialog.Description>
+                    <Dialog.Title className="font-semibold text-black-a12 text-large">PANTONE®</Dialog.Title>
+                    <h3 className="font-medium text-black-a12">13-1023</h3>
+                    <Dialog.Description className="font-medium text-black-a12 text-default">Peach Fuzz</Dialog.Description>
                   </div>
-                  <Dialog.Close className="!text-gray-1 absolute top-4 right-4 flex h-[24px] w-[24px] items-center justify-center rounded-full bg-gray-12 align-middle transition-all ease-in-out hover:brightness-90">
+                  <Dialog.Close className="!text-white-a12 absolute top-4 right-4 flex h-[24px] w-[24px] items-center justify-center rounded-full bg-black-a12 align-middle transition-all ease-in-out hover:brightness-90">
                     <Cross2Icon />
                   </Dialog.Close>
                 </Dialog.Item>
