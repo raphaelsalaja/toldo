@@ -2,48 +2,65 @@
 
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { AnimatePresence, type AnimationProps, motion } from "framer-motion";
-import { useState } from "react";
+import React from "react";
 import * as Dialog from "toldo";
 
 export const Shared = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const variants: { [key: string]: AnimationProps } = {
+    overlay: {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0 },
+      transition: { ease: [0.19, 1, 0.22, 1], duration: 0.4 },
+    },
+  };
+
   return (
-    <Dialog.Root>
-      <Dialog.Trigger
-        asChild
-        className="h-[32px] rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3 transition-all ease-in-out hover:brightness-95"
-      >
-        Open Dialog
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger>
+        <Dialog.Item
+          layout
+          layoutId="container"
+          className="flex size-24 items-center justify-between gap-2 overflow-hidden"
+          style={{
+            borderRadius: 12,
+          }}
+        >
+          <motion.div layoutId="media" className="relative h-full w-full bg-[#FFBF98]" />
+        </Dialog.Item>
       </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-blackA6 data-[state=open]:animate-overlayShow" />
-        <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 max-h-[85vh] w-[90vw] max-w-[450px] rounded-md bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow">
-          <Dialog.Title className="m-0 font-medium text-[17px] text-mauve12">Edit profile</Dialog.Title>
-          <Dialog.Description className="mt-2.5 mb-5 text-[15px] text-mauve11 leading-normal">
-            Make changes to your profile here. Click save when you're done.
-          </Dialog.Description>
-          <fieldset className="mb-[15px] flex items-center gap-5">
-            <label className="w-[90px] text-right text-[15px] text-violet11" htmlFor="name">
-              Name
-            </label>
-            <input
-              className="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded px-2.5 text-[15px] text-violet11 leading-none shadow-[0_0_0_1px] shadow-violet7 outline-none focus:shadow-[0_0_0_2px] focus:shadow-violet8"
-              id="name"
-              defaultValue="Pedro Duarte"
-            />
-          </fieldset>
-          <fieldset className="mb-[15px] flex items-center gap-5">
-            <label className="w-[90px] text-right text-[15px] text-violet11" htmlFor="username">
-              Username
-            </label>
-            <input
-              className="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded px-2.5 text-[15px] text-violet11 leading-none shadow-[0_0_0_1px] shadow-violet7 outline-none focus:shadow-[0_0_0_2px] focus:shadow-violet8"
-              id="username"
-              defaultValue="@peduarte"
-            />
-          </fieldset>
-          <div className="mt-[25px] flex justify-end" />
-        </Dialog.Content>
-      </Dialog.Portal>
+      <AnimatePresence>
+        {open && (
+          <Dialog.Portal forceMount>
+            <Dialog.Overlay className="fixed top-0 left-0 h-full w-full">
+              <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
+            </Dialog.Overlay>
+            <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 transform">
+              <Dialog.Item
+                layout
+                layoutId="container"
+                className="overflow-hidden bg-gray-1 sm:w-[512px]"
+                style={{
+                  borderRadius: 12,
+                }}
+              >
+                <Dialog.Item layoutId="media" className="relative flex h-96 w-full flex-col justify-end gap-4 bg-[#FFBF98] p-6">
+                  <div className="flex flex-col gap-0 align-middle">
+                    <Dialog.Title className="font-semibold text-foreground text-large">PANTONE®</Dialog.Title>
+                    <h3>13-1023</h3>
+                    <Dialog.Description className="text-default">Peach Fuzz</Dialog.Description>
+                  </div>
+                  <Dialog.Close className="!text-gray-1 absolute top-4 right-4 flex h-[24px] w-[24px] items-center justify-center rounded-full bg-gray-12 align-middle transition-all ease-in-out hover:brightness-90">
+                    <Cross2Icon />
+                  </Dialog.Close>
+                </Dialog.Item>
+              </Dialog.Item>
+            </Dialog.Content>
+          </Dialog.Portal>
+        )}
+      </AnimatePresence>
     </Dialog.Root>
   );
 };

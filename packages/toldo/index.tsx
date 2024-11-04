@@ -191,11 +191,7 @@ const DialogDescription: React.FC<DialogDescriptionProps> = ({ children, ...prop
 type DialogSharedItemProps = HTMLMotionProps<"div">;
 
 const DialogSharedItem: React.FC<DialogSharedItemProps> = ({ children, ...props }) => {
-  return (
-    <motion.div layout {...props}>
-      {children}
-    </motion.div>
-  );
+  return <motion.div {...props}>{children}</motion.div>;
 };
 
 interface DialogStackProps extends RadixDialogPrimitive.DialogContentProps {

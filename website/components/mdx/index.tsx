@@ -32,6 +32,9 @@ const components = {
   figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
   h1: (props: Heading1Props) => <H1 {...props} />,
   a: (props: AnchorProps) => <Link {...props} className="inline-flex items-center gap-1 text-muted" underline />,
+  blockquote: (props: JSX.IntrinsicAttributes & { children: JSX.Element }) => (
+    <blockquote {...props} className="my-4 border-gray-4 border-l-2 py-1 pl-4 font-normal text-muted text-small" />
+  ),
 };
 
 export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {

@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Clipboard, Code, FileCode, FileTerminal, Terminal } from "lucide-react";
+import { Check, Clipboard, Code, Terminal } from "lucide-react";
 import { type DetailedHTMLProps, type HTMLAttributes, useEffect, useRef, useState } from "react";
 
 interface FigCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
