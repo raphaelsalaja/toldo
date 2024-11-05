@@ -1,6 +1,7 @@
 {
   "name": "toldo",
-  "version": "0.1.0",
+  "description": "An elevated dialog component for React",
+  "version": "0.1.1",
   "scripts": {
     "build": "tsup index.tsx",
     "dev": "tsup index.tsx --watch --silent",
