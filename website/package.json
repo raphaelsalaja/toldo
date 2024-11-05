@@ -58,7 +58,7 @@
     "shiki": "^1.22.1",
     "tailwind-highlightjs": "^2.0.1",
     "tailwind-merge": "^2.5.4",
-    "toldo": "^0.1.0",
+    "toldo": "^0.1.2",
     "unified": "^11.0.5"
   },
   "devDependencies": {

@@ -214,8 +214,8 @@ importers:
         specifier: ^2.5.4
         version: 2.5.4
       toldo:
-        specifier: ^0.1.0
-        version: 0.1.0(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
+        specifier: ^0.1.2
+        version: 0.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -3937,8 +3937,8 @@ packages:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
 
-  toldo@0.1.0:
-    resolution: {integrity: sha512-RYh8XVq911uyjR/6MA6+Os0qerWun1+KQ6dSAYvtGkZh0Zca7yxLUEN3npFmHBPeGJG087EP1+vBHU/O6Wq7Xg==}
+  toldo@0.1.2:
+    resolution: {integrity: sha512-nMwV3Yt03Z2ueoCJq5agKD1Xn/Fk4VdVGqVQ1mXsSXAeH8n5UXs2319Eo0swcshBw/xE7J14pUW+6mNBwjKW1w==}
     engines: {node: '>=18'}
 
   tr46@0.0.3:
@@ -8494,7 +8494,7 @@ snapshots:
 
   toidentifier@1.0.1: {}
 
-  toldo@0.1.0(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1):
+  toldo@0.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1):
     dependencies:
       '@radix-ui/react-dialog': 1.1.2(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
       '@radix-ui/react-primitive': 2.0.0(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)(types-react-dom@19.0.0-rc.1)(types-react@19.0.0-rc.1)
