@@ -40,7 +40,9 @@ interface DialogProviderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const DialogProvider: React.FC<DialogProviderProps> = ({ children, dialogs: initialDialogs }) => {
-  const [dialogs, setDialogs] = React.useState<DialogProps[]>(initialDialogs?.map((dialog) => ({ ...dialog, open: dialog.open ?? false })) || []);
+  const [dialogs, setDialogs] = React.useState<DialogProps[]>(
+    initialDialogs?.map((dialog) => ({ ...dialog, open: dialog.open ?? false })) || [],
+  );
 
   const openDialog = (id: string) => {
     setDialogs((prevDialogs) =>
@@ -204,7 +206,12 @@ interface DialogStackProps extends RadixDialogPrimitive.DialogContentProps {
   transition?: HTMLMotionProps<"div">["transition"];
 }
 
-const DialogStack: React.FC<DialogStackProps> = ({ offsetY = 24, offsetScale = 0.05, offsetOpacity = 0.33, ...props }) => {
+const DialogStack: React.FC<DialogStackProps> = ({
+  offsetY = 24,
+  offsetScale = 0.05,
+  offsetOpacity = 0.33,
+  ...props
+}) => {
   const { dialogs, clearDialogs } = useDialogContext();
   const openDialogs = dialogs.filter((dialog) => dialog.open);
 
@@ -281,7 +288,8 @@ const DialogStack: React.FC<DialogStackProps> = ({ offsetY = 24, offsetScale = 0
   );
 };
 
-type DialogStackContentProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> & React.HTMLAttributes<HTMLHeadingElement>;
+type DialogStackContentProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> &
+  React.HTMLAttributes<HTMLHeadingElement>;
 const DialogStackContent: React.FC<DialogStackContentProps> = ({ children, ...props }) => {
   const { id } = useDialogContext();
   return (
@@ -291,7 +299,8 @@ const DialogStackContent: React.FC<DialogStackContentProps> = ({ children, ...pr
   );
 };
 
-type DialogStackTitleProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> & React.HTMLAttributes<HTMLHeadingElement>;
+type DialogStackTitleProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> &
+  React.HTMLAttributes<HTMLHeadingElement>;
 const DialogStackTitle: React.FC<DialogStackTitleProps> = ({ children, ...props }) => {
   const { id } = useDialogContext();
   return (
@@ -301,7 +310,8 @@ const DialogStackTitle: React.FC<DialogStackTitleProps> = ({ children, ...props 
   );
 };
 
-type DialogStackDescriptionProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> & React.HTMLAttributes<HTMLHeadingElement>;
+type DialogStackDescriptionProps = React.ComponentPropsWithoutRef<typeof Primitive.h2> &
+  React.HTMLAttributes<HTMLHeadingElement>;
 const DialogStackDescription: React.FC<DialogStackDescriptionProps> = ({ children, ...props }) => {
   const { id } = useDialogContext();
   return (
@@ -368,7 +378,7 @@ export {
   DialogClose as Close,
   DialogTitle as Title,
   DialogDescription as Description,
-  DialogSharedItem as Item,
+  DialogSharedItem as SharedItem,
 };
 
 export type {
@@ -387,5 +397,5 @@ export type {
   DialogCloseProps as CloseProps,
   DialogTitleProps as TitleProps,
   DialogDescriptionProps as DescriptionProps,
-  DialogSharedItemProps as ItemProps,
+  DialogSharedItemProps as SharedItemProps,
 };

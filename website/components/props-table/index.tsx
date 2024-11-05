@@ -34,7 +34,13 @@ export const PropsTable = ({ data }: PropsTableProps) => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.name} className={clsx("w-full text-left font-default text-default", item !== data[data.length - 1] && "border-gray-4 border-b")}>
+            <tr
+              key={item.name}
+              className={clsx(
+                "w-full text-left font-default text-default",
+                item !== data[data.length - 1] && "border-gray-4 border-b",
+              )}
+            >
               <td className="px-4 py-3 font-normal text-small">
                 <div className="flex items-center gap-1">
                   <div className="w-fit rounded-md bg-pink-3 px-1 font-mono text-pink-11">{item.name}</div>
@@ -52,7 +58,11 @@ export const PropsTable = ({ data }: PropsTableProps) => {
                 )}
               </td>
               <td className="px-4 py-3 font-normal text-small">
-                {item.default ? <div className="w-fit rounded-md bg-gray-3 px-1 font-mono text-gray-11">{item.default}</div> : <div>-</div>}
+                {item.default ? (
+                  <div className="w-fit rounded-md bg-gray-3 px-1 font-mono text-gray-11">{item.default}</div>
+                ) : (
+                  <div>-</div>
+                )}
               </td>
             </tr>
           ))}

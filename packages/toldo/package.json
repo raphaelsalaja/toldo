@@ -1,6 +1,6 @@
 {
   "name": "toldo",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "scripts": {
     "build": "tsup index.tsx",
     "dev": "tsup index.tsx --watch --silent",

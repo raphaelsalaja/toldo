@@ -19,18 +19,22 @@ export const Shared = () => {
       exit: { scale: 0.9, opacity: 0 },
       transition: { ease: [0.19, 1, 0.22, 1], duration: 0.4 },
     },
-    button: { 
-      transition: { layout: { ease: [0.19, 1, 0.22, 1], duration: 0.6 } } 
+    button: {
+      transition: { layout: { ease: [0.19, 1, 0.22, 1], duration: 0.6 } },
     },
   };
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>
-        <Dialog.Item layout layoutId="action" className="pointer-events-auto flex h-[32px] items-center rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3" {...variants.button}
+        <Dialog.SharedItem
+          layout
+          layoutId="action"
+          className="pointer-events-auto flex h-[32px] items-center rounded-lg border border-gray-3 bg-gradient-to-t bg-gray-1 from-gray-1 to-gray-2 px-3"
+          {...variants.button}
         >
           Open Dialog
-        </Dialog.Item>
+        </Dialog.SharedItem>
       </Dialog.Trigger>
 
       <AnimatePresence>
@@ -39,10 +43,17 @@ export const Shared = () => {
             <Dialog.Overlay className="fixed top-0 left-0 h-full w-full">
               <motion.div className="fixed inset-0 bg-black-a10" {...variants.overlay} />
             </Dialog.Overlay>
-            <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 transform">
-              <motion.div className="flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]" {...variants.content}>
-                <Dialog.Title className="px-6 pt-5 font-semibold text-foreground text-large">Change Username</Dialog.Title>
-                <Dialog.Description className="px-6 py-1 text-default text-muted">Make changes to your username here.</Dialog.Description>
+            <Dialog.Content className="-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 max-h-[85vh] w-[90vw] max-w-[450px]">
+              <motion.div
+                className="w-full flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]"
+                {...variants.content}
+              >
+                <Dialog.Title className="px-6 pt-5 font-semibold text-foreground text-large">
+                  Change Username
+                </Dialog.Title>
+                <Dialog.Description className="px-6 py-1 text-default text-muted">
+                  Make changes to your username here.
+                </Dialog.Description>
                 <fieldset className="mb-[15px] flex items-center gap-4 px-6 py-4">
                   <input
                     id="name"

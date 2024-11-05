@@ -30,7 +30,12 @@ export default async function Page() {
             <div>Toldo</div>
           </div>
           <div className="flex gap-2 text-muted">
-            <a href="https://github.com/raphaelsalaja/toldo" target="_blank" rel="noopener noreferrer" className={className}>
+            <a
+              href="https://github.com/raphaelsalaja/toldo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={className}
+            >
               Github
             </a>
             ―
@@ -38,7 +43,12 @@ export default async function Page() {
               Twitter
             </a>
             ―
-            <a href="https://www.npmjs.com/package/toldo" target="_blank" rel="noopener noreferrer" className={className}>
+            <a
+              href="https://www.npmjs.com/package/toldo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={className}
+            >
               {toldo.version}
             </a>
           </div>

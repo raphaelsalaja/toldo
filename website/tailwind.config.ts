@@ -9,7 +9,6 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./markdown/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./mdx-components.tsx",
   ],
   theme: {
     extend: {
@@ -223,7 +222,6 @@ const config: Config = {
       },
       fontFamily: {
         inter: ["var(--font-inter)"],
-        apple: ["var(--font-apple)"],
       },
       borderRadius: {
         small: "var(--radius-small)",
@@ -237,6 +235,7 @@ const config: Config = {
       addUtilities({
         ".text-small": {
           fontSize: "12px",
+          lineHeight: "18px",
           letterSpacing: "0.01px",
         },
         ".text-default": {

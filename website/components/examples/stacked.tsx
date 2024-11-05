@@ -11,9 +11,13 @@ export const Stacked = () => {
     {
       id: "username",
       dialog: (
-        <Dialog.StackContent className="flex max-h-[85vh] w-[80vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]">
-          <Dialog.StackTitle className="px-6 pt-5 font-semibold text-foreground text-large">Change Username</Dialog.StackTitle>
-          <Dialog.StackDescription className="px-6 py-1 text-default text-muted">Make changes to your username here.</Dialog.StackDescription>
+        <Dialog.StackContent className="flex max-h-[85vh] w-[90vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]">
+          <Dialog.StackTitle className="px-6 pt-5 font-semibold text-foreground text-large">
+            Change Username
+          </Dialog.StackTitle>
+          <Dialog.StackDescription className="px-6 py-1 text-default text-muted">
+            Make changes to your username here.
+          </Dialog.StackDescription>
           <fieldset className="mb-[15px] flex items-center gap-4 px-6 py-5">
             <input
               id="name"
@@ -38,9 +42,13 @@ export const Stacked = () => {
     {
       id: "email",
       dialog: (
-        <Dialog.StackContent className="flex max-h-[85vh] w-[80vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]">
-          <Dialog.StackTitle className="px-6 pt-5 font-semibold text-foreground text-large">Change Email</Dialog.StackTitle>
-          <Dialog.StackDescription className="px-6 py-1 text-default text-muted">Make changes to your email here.</Dialog.StackDescription>
+        <Dialog.StackContent className="flex max-h-[85vh] w-[90vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]">
+          <Dialog.StackTitle className="px-6 pt-5 font-semibold text-foreground text-large">
+            Change Email
+          </Dialog.StackTitle>
+          <Dialog.StackDescription className="px-6 py-1 text-default text-muted">
+            Make changes to your email here.
+          </Dialog.StackDescription>
           <fieldset className="mb-[15px] flex items-center gap-4 px-6 py-5">
             <input
               id="email"
@@ -50,7 +58,7 @@ export const Stacked = () => {
           </fieldset>
           <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-4">
             <Dialog.StackRemove
-              dialogId="username"
+              dialogId="email"
               className="!text-gray-11 h-[32px] max-w-fit rounded-lg bg-gray-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
               Return
@@ -68,9 +76,13 @@ export const Stacked = () => {
     {
       id: "date-of-birth",
       dialog: (
-        <Dialog.StackContent className="flex max-h-[85vh] w-[80vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]">
-          <Dialog.StackTitle className="px-6 pt-5 font-semibold text-foreground text-large">Change Date of Birth</Dialog.StackTitle>
-          <Dialog.StackDescription className="px-6 py-1 text-default text-muted">Make changes to your birth date here.</Dialog.StackDescription>
+        <Dialog.StackContent className="flex max-h-[85vh] w-[90vw] flex-col overflow-hidden rounded-xl border border-gray-3 bg-gray-1 sm:w-[384px]">
+          <Dialog.StackTitle className="px-6 pt-5 font-semibold text-foreground text-large">
+            Change Date of Birth
+          </Dialog.StackTitle>
+          <Dialog.StackDescription className="px-6 py-1 text-default text-muted">
+            Make changes to your birth date here.
+          </Dialog.StackDescription>
           <fieldset className="mb-[15px] flex items-center gap-4 px-6 py-5">
             <input
               id="date-of-birth"
@@ -80,10 +92,10 @@ export const Stacked = () => {
           </fieldset>
           <div className="flex justify-between gap-4 border-gray-3 border-t bg-gray-2 px-6 py-4">
             <Dialog.StackRemove
-              dialogId="email"
+              dialogId="date-of-birth"
               className="!text-gray-11 h-[32px] max-w-fit rounded-lg bg-gray-a3 px-3 transition-all ease-in-out hover:brightness-150"
             >
-              Cancel
+              Return
             </Dialog.StackRemove>
             <Dialog.Close className="!text-green-11 h-[32px] max-w-fit rounded-lg bg-green-a3 px-3 transition-all ease-in-out hover:brightness-150">
               Save Changes

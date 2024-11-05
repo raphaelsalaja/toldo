@@ -28,7 +28,9 @@ const components = {
   BasicWithAnimationExample: () => <Examples.BasicWithAnimation />,
   StackedExample: () => <Examples.Stacked />,
   ComponentContainer: (props: ComponentContainerProps) => <ComponentContainer {...props} />,
-  Code: (props: CodeProps) => <span {...props} className="inline-block rounded-md bg-gray-3 px-1 font-mono text-gray-11 text-sm" />,
+  Code: (props: CodeProps) => (
+    <span {...props} className="inline-block rounded-md bg-gray-3 px-1 font-mono text-gray-11 text-sm" />
+  ),
   figcaption: (props: FigCaptionProps) => <FigCaption {...props} />,
   h1: (props: Heading1Props) => <H1 {...props} />,
   a: (props: AnchorProps) => <Link {...props} className="inline-flex items-center gap-1 text-muted" underline />,

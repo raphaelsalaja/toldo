@@ -46,7 +46,13 @@ export const H1 = (props: H1Props) => {
       onHoverStart={onHoverStart}
       onHoverEnd={onHoverEnd}
     >
-      <motion.div initial={initial} animate={animate} exit={exit} transition={transition} className="-left-6 -translate-y-1/2 absolute top-1/2 transform">
+      <motion.div
+        initial={initial}
+        animate={animate}
+        exit={exit}
+        transition={transition}
+        className="-left-6 -translate-y-1/2 absolute top-1/2 transform"
+      >
         <Hash size={14} color="var(--gray-10)" />
       </motion.div>
 
