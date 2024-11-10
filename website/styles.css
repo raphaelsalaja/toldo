@@ -75,6 +75,10 @@
     background-color: var(--selection-background);
   }
 
+  iframe::-webkit-scrollbar {
+    display: none;
+  }
+
   html {
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
     scrollbar-width: thin;

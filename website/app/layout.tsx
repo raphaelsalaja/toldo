@@ -1,9 +1,8 @@
 import { Article } from "@/components/article";
+import Providers from "@/components/providers";
 import "@/styles.css";
 
 import type { Metadata } from "next";
-
-import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Toldo",
@@ -46,11 +45,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body>
-        <ThemeProvider enableSystem={true} attribute="class" storageKey="theme" defaultTheme="system">
+        <Providers>
           <main className="mx-auto max-w-screen-md gap-x-12 overflow-x-hidden px-6 py-24 md:overflow-x-visible">
             <Article className="article">{children}</Article>
           </main>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
