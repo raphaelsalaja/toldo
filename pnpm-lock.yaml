@@ -148,8 +148,8 @@ importers:
         specifier: ^5.45.25
         version: 5.45.25
       next:
-        specifier: 15.0.1
-        version: 15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+        specifier: 15.0.7
+        version: 15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       next-compose-plugins:
         specifier: ^2.2.1
         version: 2.2.1
@@ -158,19 +158,19 @@ importers:
         version: 5.0.0(acorn@8.14.0)(react@19.0.0-rc-69d4b800-20241021)(types-react@19.0.0-rc.1)
       next-remote-refresh:
         specifier: ^0.10.1
-        version: 0.10.1(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+        version: 0.10.1(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       next-remote-watch:
         specifier: ^2.0.0
-        version: 2.0.0(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))
+        version: 2.0.0(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))
+        version: 4.2.3(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       next-view-transitions:
         specifier: ^0.3.2
-        version: 0.3.2(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+        version: 0.3.2(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       path:
         specifier: ^0.12.7
         version: 0.12.7
@@ -840,8 +840,8 @@ packages:
   '@next/env@13.5.7':
     resolution: {integrity: sha512-uVuRqoj28Ys/AI/5gVEgRAISd0KWI0HRjOO1CTpNgmX3ZsHb5mdn14Y59yk0IxizXdo7ZjsI2S7qbWnO+GNBcA==}
 
-  '@next/env@15.0.1':
-    resolution: {integrity: sha512-lc4HeDUKO9gxxlM5G2knTRifqhsY6yYpwuHspBZdboZe0Gp+rZHBNNSIjmQKDJIdRXiXGyVnSD6gafrbQPvILQ==}
+  '@next/env@15.0.7':
+    resolution: {integrity: sha512-g/v9G2Xmv9T6w/DcRdcdVkLuAHnGt5fcJ3C33PmPrrdtUrwrjXcT4jXasdedSbw+koXa4YeEA3nPgy6q2wmk2A==}
 
   '@next/eslint-plugin-next@15.0.1':
     resolution: {integrity: sha512-bKWsMaGPbiFAaGqrDJvbE8b4Z0uKicGVcgOI77YM2ui3UfjHMr4emFPrZTLeZVchi7fT1mooG2LxREfUUClIKw==}
@@ -857,50 +857,50 @@ packages:
       '@mdx-js/react':
         optional: true
 
-  '@next/swc-darwin-arm64@15.0.1':
-    resolution: {integrity: sha512-C9k/Xv4sxkQRTA37Z6MzNq3Yb1BJMmSqjmwowoWEpbXTkAdfOwnoKOpAb71ItSzoA26yUTIo6ZhN8rKGu4ExQw==}
+  '@next/swc-darwin-arm64@15.0.5':
+    resolution: {integrity: sha512-BrNm/9BZoV6QEFKFZdgZRyYwhdhxV8GhW+U4D5cdkT4Wefj7YflAUZNx2FWyBPp7utBPCgJXnVbVLhlDoIfKFg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@15.0.1':
-    resolution: {integrity: sha512-uHl13HXOuq1G7ovWFxCACDJHTSDVbn/sbLv8V1p+7KIvTrYQ5HNoSmKBdYeEKRRCbEmd+OohOgg9YOp8Ux3MBg==}
+  '@next/swc-darwin-x64@15.0.5':
+    resolution: {integrity: sha512-SkpRdqyJLhmU6Ip0dHrZ5mLMQgTU0MlTASRwqCj6NXQJ04eS4QzBgEUUOPX+tsUOQ+KSVMgX/iQaWgQHNMyyCQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@15.0.1':
-    resolution: {integrity: sha512-LvyhvxHOihFTEIbb35KxOc3q8w8G4xAAAH/AQnsYDEnOvwawjL2eawsB59AX02ki6LJdgDaHoTEnC54Gw+82xw==}
+  '@next/swc-linux-arm64-gnu@15.0.5':
+    resolution: {integrity: sha512-nk+6BAIkIHTeQg+U1uqGpZ8K1KSAbhq80EkSgpgPC6wBmRkEeBitn4yL9C0fUiEPeZ3zN4yrvI635GG/H2QmSQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@15.0.1':
-    resolution: {integrity: sha512-vFmCGUFNyk/A5/BYcQNhAQqPIw01RJaK6dRO+ZEhz0DncoW+hJW1kZ8aH2UvTX27zPq3m85zN5waMSbZEmANcQ==}
+  '@next/swc-linux-arm64-musl@15.0.5':
+    resolution: {integrity: sha512-CozywhydLroNNz1AMKdKKVBuRc0UIBG7TlVgXXn51MdZo4sMbfApOlQFUyuAbKJbe67vd39Yib2lVVVDfLTtfw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@15.0.1':
-    resolution: {integrity: sha512-5by7IYq0NCF8rouz6Qg9T97jYU68kaClHPfGpQG2lCZpSYHtSPQF1kjnqBTd34RIqPKMbCa4DqCufirgr8HM5w==}
+  '@next/swc-linux-x64-gnu@15.0.5':
+    resolution: {integrity: sha512-VWfvl8toyC/5Rn1GgKfiASYgssCsxz4GtwK2cFKmmnyGfoKubFc6DfCI5MzBoe2Q2gzd2CeZDoT1BhuutSiL7A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@15.0.1':
-    resolution: {integrity: sha512-lmYr6H3JyDNBJLzklGXLfbehU3ay78a+b6UmBGlHls4xhDXBNZfgb0aI67sflrX+cGBnv1LgmWzFlYrAYxS1Qw==}
+  '@next/swc-linux-x64-musl@15.0.5':
+    resolution: {integrity: sha512-xCD/V4Z55eFtG2SNyXgG3ciIikcxNe4FgmgcW4xTaEcLY59ZJVLxx4PLve2vDgp7xqvwDD4vvUsJuFMuQ12oGg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-win32-arm64-msvc@15.0.1':
-    resolution: {integrity: sha512-DS8wQtl6diAj0eZTdH0sefykm4iXMbHT4MOvLwqZiIkeezKpkgPFcEdFlz3vKvXa2R/2UEgMh48z1nEpNhjeOQ==}
+  '@next/swc-win32-arm64-msvc@15.0.5':
+    resolution: {integrity: sha512-OmKXP/mUzY+AiDFk9PR3RoM6YfgzNYhtSbfvTUDk3PxoCLKnwTZ8xsFoWX2ph/RFC25QucTeAFepouGGsdBPAg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@15.0.1':
-    resolution: {integrity: sha512-4Ho2ggvDdMKlZ/0e9HNdZ9ngeaBwtc+2VS5oCeqrbXqOgutX6I4U2X/42VBw0o+M5evn4/7v3zKgGHo+9v/VjA==}
+  '@next/swc-win32-x64-msvc@15.0.5':
+    resolution: {integrity: sha512-O34P9asvZtdNQ+4sEczSLruYvM7XEQKY/FCwRAeQQnrWW3tol3VEuv2GtnFb1YHsP3lZtagd11UYJqrs0Y0r2A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -1535,6 +1535,7 @@ packages:
 
   '@vercel/edge@1.1.2':
     resolution: {integrity: sha512-wt5SnhsMahWX8U9ZZhFUQoiXhMn/CUxA5xeMdZX1cwyOL1ZbDR3rNI8HRT9RSU73nDxeF6jlnqJyp/0Jy0VM2A==}
+    deprecated: This package is deprecated. You should to use `@vercel/functions` instead.
 
   '@vercel/functions@1.5.0':
     resolution: {integrity: sha512-ub3ptVeOsx8UPgiTv9+rpQJqmF7VG8QIzguBZo0E0VRAyJliB8bt1ooB9Wrh3333dKzMNS8NMe3iFtf6OPUP3A==}
@@ -3460,16 +3461,16 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
 
-  next@15.0.1:
-    resolution: {integrity: sha512-PSkFkr/w7UnFWm+EP8y/QpHrJXMqpZzAXpergB/EqLPOh4SGPJXv1wj4mslr2hUZBAS9pX7/9YLIdxTv6fwytw==}
-    engines: {node: '>=18.18.0'}
+  next@15.0.7:
+    resolution: {integrity: sha512-Vl6fLEuOP1MgtEmDrY51BQr6Bl8oC8vDSHdA10xZWPPZa6e+dOwYNDLWHjvTktNLZkKYySpsW3Yzy4Lo+JORkw==}
+    engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
       '@playwright/test': ^1.41.2
       babel-plugin-react-compiler: '*'
-      react: ^18.2.0 || 19.0.0-rc-69d4b800-20241021
-      react-dom: ^18.2.0 || 19.0.0-rc-69d4b800-20241021
+      react: ^18.2.0 || 19.0.0-rc-66855b96-20241106 || ^19.0.0
+      react-dom: ^18.2.0 || 19.0.0-rc-66855b96-20241106 || ^19.0.0
       sass: ^1.3.0
     peerDependenciesMeta:
       '@opentelemetry/api':
@@ -3567,6 +3568,7 @@ packages:
 
   oniguruma-to-js@0.4.3:
     resolution: {integrity: sha512-X0jWUcAlxORhOqqBREgPMgnshB7ZGYszBNspP+tS9hPD3l13CdaXcHbgImoHUHlrvGx/7AvFEkTRhAGYh+jzjQ==}
+    deprecated: use oniguruma-to-es instead
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -4124,6 +4126,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
@@ -4313,6 +4316,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
@@ -4639,6 +4643,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -5288,7 +5293,7 @@ snapshots:
 
   '@next/env@13.5.7': {}
 
-  '@next/env@15.0.1': {}
+  '@next/env@15.0.7': {}
 
   '@next/eslint-plugin-next@15.0.1':
     dependencies:
@@ -5301,28 +5306,28 @@ snapshots:
       '@mdx-js/loader': 3.1.0(acorn@8.14.0)
       '@mdx-js/react': 3.1.0(react@19.0.0-rc-69d4b800-20241021)(types-react@19.0.0-rc.1)
 
-  '@next/swc-darwin-arm64@15.0.1':
+  '@next/swc-darwin-arm64@15.0.5':
     optional: true
 
-  '@next/swc-darwin-x64@15.0.1':
+  '@next/swc-darwin-x64@15.0.5':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@15.0.1':
+  '@next/swc-linux-arm64-gnu@15.0.5':
     optional: true
 
-  '@next/swc-linux-arm64-musl@15.0.1':
+  '@next/swc-linux-arm64-musl@15.0.5':
     optional: true
 
-  '@next/swc-linux-x64-gnu@15.0.1':
+  '@next/swc-linux-x64-gnu@15.0.5':
     optional: true
 
-  '@next/swc-linux-x64-musl@15.0.1':
+  '@next/swc-linux-x64-musl@15.0.5':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@15.0.1':
+  '@next/swc-win32-arm64-msvc@15.0.5':
     optional: true
 
-  '@next/swc-win32-x64-msvc@15.0.1':
+  '@next/swc-win32-x64-msvc@15.0.5':
     optional: true
 
   '@nodelib/fs.scandir@2.1.5':
@@ -8354,48 +8359,48 @@ snapshots:
       - acorn
       - supports-color
 
-  next-remote-refresh@0.10.1(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
+  next-remote-refresh@0.10.1(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
     dependencies:
       chokidar: 3.6.0
-      next: 15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+      next: 15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       react: 19.0.0-rc-69d4b800-20241021
       ws: 8.18.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  next-remote-watch@2.0.0(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)):
+  next-remote-watch@2.0.0(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)):
     dependencies:
       chalk: 4.1.2
       chokidar: 3.6.0
       commander: 5.1.0
       express: 4.21.1
-      next: 15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+      next: 15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
     transitivePeerDependencies:
       - supports-color
 
-  next-sitemap@4.2.3(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)):
+  next-sitemap@4.2.3(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)):
     dependencies:
       '@corex/deepmerge': 4.0.43
       '@next/env': 13.5.7
       fast-glob: 3.3.2
       minimist: 1.2.8
-      next: 15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+      next: 15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
 
   next-themes@0.3.0(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
     dependencies:
       react: 19.0.0-rc-69d4b800-20241021
       react-dom: 19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021)
 
-  next-view-transitions@0.3.2(next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
+  next-view-transitions@0.3.2(next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021))(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
     dependencies:
-      next: 15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
+      next: 15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021)
       react: 19.0.0-rc-69d4b800-20241021
       react-dom: 19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021)
 
-  next@15.0.1(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
+  next@15.0.7(@babel/core@7.26.0)(react-dom@19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021))(react@19.0.0-rc-69d4b800-20241021):
     dependencies:
-      '@next/env': 15.0.1
+      '@next/env': 15.0.7
       '@swc/counter': 0.1.3
       '@swc/helpers': 0.5.13
       busboy: 1.6.0
@@ -8405,14 +8410,14 @@ snapshots:
       react-dom: 19.0.0-rc-69d4b800-20241021(react@19.0.0-rc-69d4b800-20241021)
       styled-jsx: 5.1.6(@babel/core@7.26.0)(react@19.0.0-rc-69d4b800-20241021)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 15.0.1
-      '@next/swc-darwin-x64': 15.0.1
-      '@next/swc-linux-arm64-gnu': 15.0.1
-      '@next/swc-linux-arm64-musl': 15.0.1
-      '@next/swc-linux-x64-gnu': 15.0.1
-      '@next/swc-linux-x64-musl': 15.0.1
-      '@next/swc-win32-arm64-msvc': 15.0.1
-      '@next/swc-win32-x64-msvc': 15.0.1
+      '@next/swc-darwin-arm64': 15.0.5
+      '@next/swc-darwin-x64': 15.0.5
+      '@next/swc-linux-arm64-gnu': 15.0.5
+      '@next/swc-linux-arm64-musl': 15.0.5
+      '@next/swc-linux-x64-gnu': 15.0.5
+      '@next/swc-linux-x64-musl': 15.0.5
+      '@next/swc-win32-arm64-msvc': 15.0.5
+      '@next/swc-win32-x64-msvc': 15.0.5
       sharp: 0.33.5
     transitivePeerDependencies:
       - '@babel/core'
