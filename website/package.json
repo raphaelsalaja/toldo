@@ -36,7 +36,7 @@
     "lucide": "^0.453.0",
     "lucide-react": "^0.453.0",
     "metascraper": "^5.45.25",
-    "next": "15.0.1",
+    "next": "15.0.7",
     "next-compose-plugins": "^2.2.1",
     "next-mdx-remote": "^5.0.0",
     "next-remote-refresh": "^0.10.1",
